@@ -1,0 +1,44 @@
+[use]
+    name = Yutaro Iwamoto
+    email = dogyear.iwmt@gmail.com
+
+[core]
+    pager = less -q -R
+    excludesfile = ~/.gitignore
+    preloadindex = true
+
+[color]
+    ui = auto
+
+[alias]
+    st = status
+    co = checkout
+    ci = commit
+    df = diff
+    t  = typechange
+    graph = log --graph --date-order --all --pretty=format:'%h %Cred%d %Cgreen%ad %Cblue%cn %Creset%s' --date=short
+
+[help]
+    autocorrect = 1
+
+[push]
+    # Use the Git 1.x.x default to avoid errors on machines with old Git
+    # installations. To use `simple` instead, add this to your `~/.extra` file:
+    # `git config --global push.default simple`. See http://git.io/mMah-w.
+    default = matching
+
+[user]
+    name  = b4b4r07
+    email = b4b4r07@gmail.com
+
+[pager]
+    log  = diff-highlight | less -RX
+    show = diff-highlight | less -RX
+    diff = diff-highlight | less -RX
+
+[diff]
+    tool      = vimdiff
+    algorithm = histogram
+
+[ghq]
+    root = ~/src
