@@ -9,8 +9,6 @@
 "   \::::/__/    \:\__\          /:/  /      |:|\/__/     \:\  \
 "    ~~~~         \/__/         /:/  /       |:|  |        \:\__\
 "
-"
-
 " README:
 " Copyright (c) 2015 dogyearm (yutaro iwamoto) All Rights Reserved
 "
@@ -31,12 +29,10 @@ if has('vim_starting')
 endif
 
 call neobundle#begin(expand('~/.vim/bundle/'))
-
 NeoBundleFetch 'Shougo/neobundle.vim'
 NeoBundle 'rking/ag.vim'
 NeoBundle 'altercation/vim-colors-solarized'
 NeoBundle 'Shougo/unite.vim'
-" endを自動入力
 NeoBundle 'tpope/vim-endwise.git'
 call neobundle#end()
 
@@ -70,33 +66,33 @@ nnoremap <silent> ,ug :<C-u>Unite grep/git:. -no-quit<CR>
 au FileType unite nnoremap <silent> <buffer> <ESC><ESC> q
 au FileType unite inoremap <silent> <buffer> <ESC><ESC> <ESC>q
 " Rails Key bind
-nnoremap <silent> ,urc :<C-u>Unite file_rec/async:!/app/controllers/ -input=!admin<CR><Space>
+nnoremap <silent> ,urc :<C-u>Unite file_rec:app/controllers/ -input=!admin<CR><Space>
 nnoremap <silent> ,urfc :<C-u>Unite file file/new -input=app/controllers/ <CR>
-nnoremap <silent> ,urm :<C-u>Unite file_rec/git:app/models/ -input=!admin <CR><Space>
+nnoremap <silent> ,urm :<C-u>Unite file_rec:app/models/ -input=!admin <CR><Space>
 nnoremap <silent> ,urfm :<C-u>Unite file file/new -input=app/models/ <CR>
-nnoremap <silent> ,urma :<C-u>Unite file_rec/git:app/mailers/ -input=!admin <CR><Space>
+nnoremap <silent> ,urma :<C-u>Unite file_rec:app/mailers/ -input=!admin <CR><Space>
 nnoremap <silent> ,urfma :<C-u>Unite file file/new -input=app/mailers/ <CR>
-nnoremap <silent> ,urd :<C-u>Unite file_rec/git:db/ -input=!admin <CR><Space>
+nnoremap <silent> ,urd :<C-u>Unite file_rec:db/ -input=!admin <CR><Space>
 nnoremap <silent> ,urfd :<C-u>Unite file file/new -input=db/ <CR>
-nnoremap <silent> ,urv :<C-u>Unite file_rec/git:app/views/ -input=!admin <CR><Space>
+nnoremap <silent> ,urv :<C-u>Unite file_rec:app/views/ -input=!admin <CR><Space>
 nnoremap <silent> ,urfv :<C-u>Unite file file/new -input=app/views/ <CR>
-nnoremap <silent> ,urs :<C-u>Unite file_rec/git:app/assets/stylesheets/ <CR>
+nnoremap <silent> ,urs :<C-u>Unite file_rec:app/assets/stylesheets/ <CR>
 nnoremap <silent> ,urfs :<C-u>Unite file file/new -input=app/assets/stylesheets/ <CR>
-nnoremap <silent> ,urj :<C-u>Unite file_rec/git:app/assets/javascripts/ <CR>
+nnoremap <silent> ,urj :<C-u>Unite file_rec:app/assets/javascripts/ <CR>
 nnoremap <silent> ,urfj :<C-u>Unite file file/new -input=app/assets/javascripts/ <CR>
-nnoremap <silent> ,uro :<C-u>Unite file_rec/git:config/ <CR>
+nnoremap <silent> ,uro :<C-u>Unite file_rec:config/ <CR>
 nnoremap <silent> ,urfo :<C-u>Unite file file/new -input=config/ <CR>
-nnoremap <silent> ,url :<C-u>Unite file_rec/git:lib/ <CR>
+nnoremap <silent> ,url :<C-u>Unite file_rec:lib/ <CR>
 nnoremap <silent> ,urfl :<C-u>Unite file file/new -input=lib/ <CR>
-nnoremap <silent> ,urr :<C-u>Unite file_rec/git:spec/ <CR>
+nnoremap <silent> ,urr :<C-u>Unite file_rec:spec/ <CR>
 nnoremap <silent> ,urfr :<C-u>Unite file file/new -input=spec/ <CR>
-nnoremap <silent> ,urt :<C-u>Unite file_rec/git:app/tasks/ <CR>
+nnoremap <silent> ,urt :<C-u>Unite file_rec:app/tasks/ <CR>
 nnoremap <silent> ,urft :<C-u>Unite file file/new -input=app/tasks/ <CR>
-nnoremap <silent> ,ura :<C-u>Unite file_rec/git:app/apis/ <CR>
+nnoremap <silent> ,ura :<C-u>Unite file_rec:app/apis/ <CR>
 nnoremap <silent> ,urfa :<C-u>Unite file file/new -input=app/apis/ <CR>
-nnoremap <silent> ,uru :<C-u>Unite file_rec/git:app/utils/ <CR>
+nnoremap <silent> ,uru :<C-u>Unite file_rec:app/utils/ <CR>
 nnoremap <silent> ,urfu :<C-u>Unite file file/new -input=app/utils/ <CR>
-nnoremap <silent> ,urh :<C-u>Unite file_rec/git:chef/ <CR>
+nnoremap <silent> ,urh :<C-u>Unite file_rec:chef/ <CR>
 nnoremap <silent> ,urfh :<C-u>Unite file file/new -input=chef/ <CR>
 " Hugo Key bind
 " Wordpress Key bind
@@ -200,7 +196,6 @@ command! Sjis Cp932
 "-------------------------------------------------------------------------------
 " 編集関連 Edit
 "-------------------------------------------------------------------------------
-
 " insertモードを抜けるとIMEオフ
 set noimdisable
 set iminsert=0 imsearch=0
