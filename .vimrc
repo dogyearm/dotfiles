@@ -33,6 +33,7 @@ endif
 call neobundle#begin(expand('~/.vim/bundle/'))
 
 NeoBundleFetch 'Shougo/neobundle.vim'
+NeoBundle 'rking/ag.vim'
 NeoBundle 'altercation/vim-colors-solarized'
 NeoBundle 'Shougo/unite.vim'
 call neobundle#end()
@@ -52,18 +53,29 @@ let g:unite_enable_split_vertically = 0
 let g:unite_winwidth = 40
 let g:unite_source_file_mru_long_limit = 100
 call unite#custom_source('file_rec', 'ignore_pattern', 'vendor/\|tmp/\|log/')
-call unite#custom_source('file_rec/async', 'ignore_pattern', 'vendor/\|tmp/\|log/')
+call unite#custom_source('file_rec/git', 'ignore_pattern', 'vendor/\|tmp/\|log/') " バッファ一覧
 " バッファ一覧
 nnoremap <silent> ,ub :<C-u>Unite buffer<CR>
-"t ファイル一覧
+" ファイル一覧
 nnoremap <silent> ,uf :<C-u>UniteWithBufferDir -buffer-name=files file file/new<CR>
 nnoremap <silent> ,ut :<C-u>Unite -buffer-name=files buffer file_mru file_rec/async file/new  <CR>
-nnoremap <silent> ,um :<C-u>Unite  file_mru <CR>
-nnoremap <silent> ,ug :<C-u>Unite grep/git:. -no-quit<CR>
-nnoremap <silent> ,urc :<C-u>Unite file_rec/git:app/controllers/ -input=!admin<CR><Space>
+" 最近使用したファイル一覧
+nnoremap <silent> ,um :<C-u>Unite file_mru <CR>
+" 常用セット
+nnoremap <silent> , uu :<C-u>Unite buffer file_mru<CR>
+" nnoremap <silent> ,ug :<C-u>Unite grep/git:. -no-quit<CR>
+" ESCキーを2回押すと終了する
+au FileType unite nnoremap <silent> <buffer> <ESC><ESC> q
+au FileType unite inoremap <silent> <buffer> <ESC><ESC> <ESC>q
+" Rails Key bind
+nnoremap <silent> ,urc :<C-u>Unite file_rec/async:!app/controllers/ -input=!admin<CR><Space>
 nnoremap <silent> ,urfc :<C-u>Unite file file/new -input=app/controllers/ <CR>
 nnoremap <silent> ,urm :<C-u>Unite file_rec/git:app/models/ -input=!admin <CR><Space>
 nnoremap <silent> ,urfm :<C-u>Unite file file/new -input=app/models/ <CR>
+nnoremap <silent> ,urma :<C-u>Unite file_rec/git:app/mailers/ -input=!admin <CR><Space>
+nnoremap <silent> ,urfma :<C-u>Unite file file/new -input=app/mailers/ <CR>
+nnoremap <silent> ,urd :<C-u>Unite file_rec/git:db/ -input=!admin <CR><Space>
+nnoremap <silent> ,urfd :<C-u>Unite file file/new -input=db/ <CR>
 nnoremap <silent> ,urv :<C-u>Unite file_rec/git:app/views/ -input=!admin <CR><Space>
 nnoremap <silent> ,urfv :<C-u>Unite file file/new -input=app/views/ <CR>
 nnoremap <silent> ,urs :<C-u>Unite file_rec/git:app/assets/stylesheets/ <CR>
@@ -84,6 +96,8 @@ nnoremap <silent> ,uru :<C-u>Unite file_rec/git:app/utils/ <CR>
 nnoremap <silent> ,urfu :<C-u>Unite file file/new -input=app/utils/ <CR>
 nnoremap <silent> ,urh :<C-u>Unite file_rec/git:chef/ <CR>
 nnoremap <silent> ,urfh :<C-u>Unite file file/new -input=chef/ <CR>
+" Hugo Key bind
+" Wordpress Key bind
 
 "-------------------------------------------------------------------------------
 " 基本設定 Basics
@@ -105,26 +119,20 @@ set showmode                     " 現在のモードを表示
 set viminfo='50,<1000,s100,\"50  " viminfoファイルの設定
 set modelines=0                  " モードラインは無効
 set notitle                      " vimを使ってくれてありがとう
-
 " OSのクリップボードを使用する
 set clipboard+=unnamed
 " ターミナルでマウスを使用できるようにする
 set mouse=a
 set guioptions+=a
 set ttymouse=xterm2
-
 "ヤンクした文字は、システムのクリップボードに入れる"
 set clipboard=unnamed
 " 挿入モードでCtrl+kを押すとクリップボードの内容を貼り付けられるようにする "
 imap <C-p>  <ESC>"*pa
-
 " Ev/Rvでvimrcの編集と反映
 command! Ev edit $MYVIMRC
 command! Rv source $MYVIMRC
-
 set helpfile=$VIMRUNTIME/doc/help.txt
-
-
 " Some Linux distributions set filetype in /etc/vimrc.
 "   " Clear filetype flags before changing runtimepath to force Vim to
 "   reload them.
@@ -132,10 +140,8 @@ if exists("g:did_load_filetypes")
   filetype off
   filetype plugin indent off
 endif
-
 " GoLangのpluginをruntime pathへ
 let goroot = substitute(system("go env GOROOT"),  '\n$',  '',  '')
-
 " ファイルタイプ判定をon
 filetype plugin on
 
@@ -158,8 +164,6 @@ hi clear CursorLine
 hi CursorLine gui=underline
 highlight CursorLine ctermbg=black guibg=black
 
-let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=1\x7\<Esc>\\"
-let &t_EI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=0\x7\<Esc>\\"
 
 "-------------------------------------------------------------------------------
 " エンコーディング関連 Encoding
