@@ -34,6 +34,15 @@ NeoBundle 'rking/ag.vim'
 NeoBundle 'altercation/vim-colors-solarized'
 NeoBundle 'Shougo/unite.vim'
 NeoBundle 'tpope/vim-endwise.git'
+NeoBundle 'pangloss/vim-javascript'
+NeoBundle 'jQuery'
+NeoBundle 'nginx.vim'
+NeoBundle 'tpope/vim-markdown'
+NeoBundle 'kchmck/vim-coffee-script'
+NeoBundle 'scrooloose/syntastic'
+NeoBundle 'fatih/vim-go'
+
+" }}}
 call neobundle#end()
 
 "-------------------------------------------------------------------------------
@@ -60,7 +69,7 @@ nnoremap <silent> ,ut :<C-u>Unite -buffer-name=files buffer file_mru file_rec/as
 " 最近使用したファイル一覧
 nnoremap <silent> ,um :<C-u>Unite file_mru <CR>
 " 常用セット
-nnoremap <silent> , uu :<C-u>Unite buffer file_mru<CR>
+nnoremap <silent> ,uu :<C-u>Unite buffer file_mru<CR>
 nnoremap <silent> ,ug :<C-u>Unite grep/git:. -no-quit<CR>
 " ESCキーを2回押すと終了する
 au FileType unite nnoremap <silent> <buffer> <ESC><ESC> q
@@ -157,10 +166,10 @@ highlight ZenkakuSpace cterm=underline ctermfg=lightblue guibg=darkgray
 match ZenkakuSpace /　/
 
 " カーソル行をハイライト
-set cursorline
-hi clear CursorLine
-hi CursorLine gui=underline
-highlight CursorLine ctermbg=black guibg=black
+" set cursorline
+" hi clear CursorLine
+" hi CursorLine gui=underline
+" highlight CursorLine ctermbg=black guibg=black
 
 
 "-------------------------------------------------------------------------------
@@ -293,3 +302,6 @@ function! s:toggle_qf_window()
   execute 'botright cw'
 endfunction
 nnoremap <silent> cw :call <SID>toggle_qf_window()<CR>
+
+" Font
+set guifont=menlo:h11
