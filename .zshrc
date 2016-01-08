@@ -12,6 +12,7 @@ bindkey -d
 
 alias gst='git status'
 alias gs='git status'
+alias ll='ls -la'
 
 
 zsh_zplug() {
