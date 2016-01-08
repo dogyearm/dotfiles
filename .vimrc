@@ -36,6 +36,8 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 NeoBundle 'rking/ag.vim'
 NeoBundle 'altercation/vim-colors-solarized'
 NeoBundle 'Shougo/unite.vim'
+" endを自動入力
+NeoBundle 'tpope/vim-endwise.git'
 call neobundle#end()
 
 "-------------------------------------------------------------------------------
@@ -63,12 +65,12 @@ nnoremap <silent> ,ut :<C-u>Unite -buffer-name=files buffer file_mru file_rec/as
 nnoremap <silent> ,um :<C-u>Unite file_mru <CR>
 " 常用セット
 nnoremap <silent> , uu :<C-u>Unite buffer file_mru<CR>
-" nnoremap <silent> ,ug :<C-u>Unite grep/git:. -no-quit<CR>
+nnoremap <silent> ,ug :<C-u>Unite grep/git:. -no-quit<CR>
 " ESCキーを2回押すと終了する
 au FileType unite nnoremap <silent> <buffer> <ESC><ESC> q
 au FileType unite inoremap <silent> <buffer> <ESC><ESC> <ESC>q
 " Rails Key bind
-nnoremap <silent> ,urc :<C-u>Unite file_rec/async:!app/controllers/ -input=!admin<CR><Space>
+nnoremap <silent> ,urc :<C-u>Unite file_rec/async:!/app/controllers/ -input=!admin<CR><Space>
 nnoremap <silent> ,urfc :<C-u>Unite file file/new -input=app/controllers/ <CR>
 nnoremap <silent> ,urm :<C-u>Unite file_rec/git:app/models/ -input=!admin <CR><Space>
 nnoremap <silent> ,urfm :<C-u>Unite file file/new -input=app/models/ <CR>
@@ -237,10 +239,8 @@ nmap yd y$
 " y0 ykで行頭までヤンク
 nmap y0 y^
 nmap yk y^
-
 " カーソルから行頭まで削除
 nnoremap <silent> <C-d> d0
-
 " カーソルから行頭まで削除(インサートモード)
 inoremap <silent> <C-k> <Esc>lc^
 " カーソルから行末まで削除(インサートモード)
@@ -298,4 +298,3 @@ function! s:toggle_qf_window()
   execute 'botright cw'
 endfunction
 nnoremap <silent> cw :call <SID>toggle_qf_window()<CR>
-
