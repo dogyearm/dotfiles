@@ -41,6 +41,25 @@ NeoBundle 'tpope/vim-markdown'
 NeoBundle 'kchmck/vim-coffee-script'
 NeoBundle 'scrooloose/syntastic'
 NeoBundle 'fatih/vim-go'
+NeoBundle 'Smooth-Scroll'
+NeoBundle 'scrooloose/nerdcommenter.git'
+NeoBundle 'xmledit'
+NeoBundle 'Align'
+NeoBundle 'godlygeek/tabular'
+NeoBundle 'Gundo'
+NeoBundle 'tpope/vim-surround'
+NeoBundle 'h1mesuke/vim-alignta'
+NeoBundle 'nathanaelkane/vim-indent-guides'
+NeoBundle 'yuroyoro/vim-autoclose'
+NeoBundle 'smartword'
+NeoBundle 'camelcasemotion'
+NeoBundle 'SQLUtilities'
+NeoBundle 'vim-ruby/vim-ruby'
+NeoBundle 'mattn/hahhah-vim'
+NeoBundle 'Lokaltog/vim-powerline'
+
+" エラーがある場所をhilight
+NeoBundle 'errormarker.vim'
 
 " }}}
 call neobundle#end()
@@ -105,6 +124,19 @@ nnoremap <silent> ,urh :<C-u>Unite file_rec:chef/ <CR>
 nnoremap <silent> ,urfh :<C-u>Unite file file/new -input=chef/ <CR>
 " Hugo Key bind
 " Wordpress Key bind
+
+"------------------------------------
+" smooth_scroll.vim
+"------------------------------------
+map  :call SmoothScroll("d",1, 1)<CR>
+map  :call SmoothScroll("u",1, 1)<CR>
+
+"------------------------------------
+" errormarker.vim
+"------------------------------------
+" disable default shortcut mapping and re-define to <Leader>ec
+let g:errormarker_disablemappings = 1
+nmap <silent> <unique> <Leader>ec :ErrorAtCursor<CR>
 
 "-------------------------------------------------------------------------------
 " 基本設定 Basics
@@ -269,7 +301,7 @@ inoremap <silent> <C-y>0 <Esc>ly$<Insert>
 " 保存時に行末の空白を除去する
 autocmd BufWritePre * :%s/\s\+$//ge
 " 保存時にtabをスペースに変換する
-" autocmd BufWritePre * :%s/\t/  /ge
+autocmd BufWritePre * :%s/\t/  /ge
 
 " 日時の自動入力
 inoremap <expr> ,df strftime('%Y/%m/%d %H:%M:%S')
@@ -305,3 +337,60 @@ nnoremap <silent> cw :call <SID>toggle_qf_window()<CR>
 
 " Font
 set guifont=menlo:h11
+
+"-------------------------------------------------------------------------------
+" ステータスライン StatusLine
+"-------------------------------------------------------------------------------
+set laststatus=2 " 常にステータスラインを表示
+
+"カーソルが何行目の何列目に置かれているかを表示する
+set ruler
+
+" vim-powerlineでフォントにパッチを当てないなら以下をコメントアウト
+let g:Powerline_symbols = 'fancy'
+
+"ステータスラインに文字コードと改行文字を表示する
+" if winwidth(0) >= 120
+"   set statusline=%<[%n]%m%r%h%w%{'['.(&fenc!=''?&fenc:&enc).':'.&ff.']'}%y\ %{g:HahHah()}\ %F%=[%{GetB()}]\ %{fugitive#statusline()}\ %l,%c%V%8P
+" else
+"   set statusline=%<[%n]%m%r%h%w%{'['.(&fenc!=''?&fenc:&enc).':'.&ff.']'}%y\ %{g:HahHah()}\ %f%=[%{GetB()}]\ %{fugitive#statusline()}\ %l,%c%V%8P
+" endif
+
+"入力モード時、ステータスラインのカラーを変更
+augroup InsertHook
+autocmd!
+autocmd InsertEnter * highlight StatusLine guifg=#ccdc90 guibg=#2E4340 ctermfg=cyan
+autocmd InsertLeave * highlight StatusLine guifg=#2E4340 guibg=#ccdc90 ctermfg=white
+augroup END
+
+"自動的に QuickFix リストを表示する
+autocmd QuickfixCmdPost make,grep,grepadd,vimgrep,vimgrepadd cwin
+autocmd QuickfixCmdPost lmake,lgrep,lgrepadd,lvimgrep,lvimgrepadd lwin
+
+function! GetB()
+  let c = matchstr(getline('.'), '.', col('.') - 1)
+  let c = iconv(c, &enc, &fenc)
+  return String2Hex(c)
+endfunction
+" help eval-examples
+" The function Nr2Hex() returns the Hex string of a number.
+func! Nr2Hex(nr)
+  let n = a:nr
+  let r = ""
+  while n
+    let r = '0123456789ABCDEF'[n % 16] . r
+    let n = n / 16
+  endwhile
+  return r
+endfunc
+" The function String2Hex() converts each character in a string to a two
+" character Hex string.
+func! String2Hex(str)
+  let out = ''
+  let ix = 0
+  while ix < strlen(a:str)
+    let out = out . Nr2Hex(char2nr(a:str[ix]))
+    let ix = ix + 1
+  endwhile
+  return out
+endfunc
