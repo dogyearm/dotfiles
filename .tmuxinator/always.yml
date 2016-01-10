@@ -3,15 +3,28 @@
 name: always
 root: ~/
 
+pre:
+  - cd ~/src/github.com
+
 windows:
-  - main:
+  - vim:
       layout: main-vertical
       panes:
         - main:
           - clear
-          - w
-          - ls -lF
-          - history | tail -n 20
-        - sub:
+          - vim
+  - terminal:
+      layout: main-vertical
+      panes:
+        - git:
           - clear
-          - dot
+          - git status
+        - rails1:
+          - clear
+          - rbenv bunlde exec rails server
+        - rails2:
+          - clear
+          - rbenv bundle exec rails console
+        - rails3:
+          - clear
+          - rbenv bundle exec guard
