@@ -41,10 +41,8 @@ RPROMPT='${vcs_info_msg_0_}'
 alias gs='git status' alias ll='ls -la'
 
 # git
-alias gst='git status'
-# git statusを見やすく
-# git logを見やすく
-# git branch にリモートブランチを表示
+alias gst='git status --short --branch'
+alias glog='git log --graph --decorate --oneline'
 
 # vimrc
 alias ev='vi ~/dotfiles/.vimrc'
