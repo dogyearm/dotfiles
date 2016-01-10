@@ -395,3 +395,6 @@ func! String2Hex(str)
   endwhile
   return out
 endfunc
+
+" vimrc簡単編集
+nnoremap <silent> ,, :edit ~/.vimrc<CR>
