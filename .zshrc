@@ -16,6 +16,9 @@ alias gs='git status' alias ll='ls -la'
 # git
 alias gst='git status'
 
+# vimrc
+alias ev='vi ~/dotfiles/.vimrc'
+
 # tmux
 alias tm='tmux'
 alias tma='tmux attach'
