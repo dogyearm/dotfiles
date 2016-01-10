@@ -78,4 +78,5 @@ if zsh_startup; then
     # bindkey -M menuselect '^l' vi-forward-char
     #bindkey -M menuselect '^k' accept-and-infer-next-history
 fi
+
 # source ~/.tmuxinator/tmuxinator.zsh
