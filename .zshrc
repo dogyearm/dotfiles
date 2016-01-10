@@ -31,9 +31,10 @@ autoload     run-help-svn
 # prompt
 setopt prompt_subst
 zstyle ':vcs_info:*' formats '[%F{green}%b%f]'
-zstyle ':vcs_info:*' actionformats '[%F{green}%b%f(%F{red}%a%f)]'
+zstyle ':vcs_info:*' actionformats '[%F{green}%b]'
 precmd() { vcs_info }
-PROMPT='%n${vcs_info_msg_0_}$ '
+PROMPT='%n$ '
+RPROMPT='${vcs_info_msg_0_}'
 
 
 # ls
@@ -133,4 +134,5 @@ if zsh_startup; then
     #bindkey -M menuselect '^k' accept-and-infer-next-history
 fi
 
-# source ~/.tmuxinator/tmuxinator.zsh
+# tmuxinator
+source ~/.zsh/tmuxinator.zsh

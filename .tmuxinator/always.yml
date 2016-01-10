@@ -1,0 +1,17 @@
+# ~/.tmuxinator/always.yml
+
+name: always
+root: ~/
+
+windows:
+  - main:
+      layout: main-vertical
+      panes:
+        - main:
+          - clear
+          - w
+          - ls -lF
+          - history | tail -n 20
+        - sub:
+          - clear
+          - dot

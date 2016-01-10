@@ -447,3 +447,12 @@ endfunc
 
 " vimrc簡単編集
 nnoremap <silent> ,, :edit ~/.vimrc<CR>
+
+" Insertモードのときカーソルの形状を変更
+let &t_SI = "\<Esc>]50;CursorShape=1\x7"
+let &t_EI = "\<Esc>]50;CursorShape=0\x7"
+inoremap <Esc> <Esc>
+
+" US keyboard
+nnoremap ; :
+nnoremap : ;
