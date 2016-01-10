@@ -28,11 +28,22 @@ autoload     run-help-git
 autoload     run-help-svk
 autoload     run-help-svn
 
+# prompt
+setopt prompt_subst
+zstyle ':vcs_info:*' formats '[%F{green}%b%f]'
+zstyle ':vcs_info:*' actionformats '[%F{green}%b%f(%F{red}%a%f)]'
+precmd() { vcs_info }
+PROMPT='%n${vcs_info_msg_0_}$ '
+
+
 # ls
 alias gs='git status' alias ll='ls -la'
 
 # git
 alias gst='git status'
+# git statusを見やすく
+# git logを見やすく
+# git branch にリモートブランチを表示
 
 # vimrc
 alias ev='vi ~/dotfiles/.vimrc'
@@ -123,13 +134,3 @@ if zsh_startup; then
 fi
 
 # source ~/.tmuxinator/tmuxinator.zsh
-# set prompt
-# PROMPT変数内で変数参照する
-setopt prompt_subst
-# vcsの表示
-zstyle ':vcs_info:*' formats '[%F{green}%b%f]'
-zstyle ':vcs_info:*' actionformats '[%F{green}%b%f(%F{red}%a%f)]'
-# プロンプト表示直前にvcs_info呼び出し
-precmd() { vcs_info }
-# プロンプト表示
-PROMPT='%n${vcs_info_msg_0_}$ '
