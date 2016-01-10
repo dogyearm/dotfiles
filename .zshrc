@@ -132,4 +132,4 @@ zstyle ':vcs_info:*' actionformats '%s][* %F{green}%b%f(%F{red}%a%f)'
 # プロンプト表示直前にvcs_info呼び出し
 precmd() { vcs_info }
 # プロンプト表示
-PROMPT='[${vcs_info_msg_0_}]:%~/%f '
+PROMPT='[${vcs_info_msg_0_}]$ '
