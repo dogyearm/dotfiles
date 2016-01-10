@@ -10,9 +10,19 @@ umask 022
 limit coredumpsize 0
 bindkey -d
 
+# ls
+alias gs='git status' alias ll='ls -la'
+
+# git
 alias gst='git status'
-alias gs='git status'
-alias ll='ls -la'
+
+# tmux
+alias tm='tmux'
+alias tma='tmux attach'
+alias tma0='tmux attach -t 0'
+alias tma1='tmux attach -t 1'
+alias tma2='tmux attach -t 2'
+alias tml='tmux list-sessions'
 
 
 zsh_zplug() {
