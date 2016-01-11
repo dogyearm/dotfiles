@@ -133,4 +133,4 @@ if zsh_startup; then
 fi
 
 # tmuxinator
-source ~/.zsh/tmuxinator.zsh
+# source ~/.zsh/tmuxinator.zsh
