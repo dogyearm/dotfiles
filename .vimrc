@@ -57,6 +57,11 @@ NeoBundle 'SQLUtilities'
 NeoBundle 'vim-ruby/vim-ruby'
 NeoBundle 'mattn/hahhah-vim'
 NeoBundle 'Lokaltog/vim-powerline'
+NeoBundle 'banyan/recognize_charcode.vim'
+" DumbBuf.vim : quickbufっぽくbufferを管理。 "<Leader>b<Space>でBufferList
+NeoBundle 'DumbBuf'
+" タブエディタ風にバッファ管理ウィンドウを表示
+NeoBundle 'fholgado/minibufexpl.vim'
 
 " エラーがある場所をhilight
 NeoBundle 'errormarker.vim'
@@ -456,3 +461,19 @@ inoremap <Esc> <Esc>
 " US keyboard
 nnoremap ; :
 nnoremap : ;
+
+"------------------------------------
+"" MiniBufExplorer
+"------------------------------------
+""set minibfexp
+let g:miniBufExplMapWindowNavVim=1 "hjklで移動
+"let g:miniBufExplSplitBelow=0  " Put new window above
+"let g:miniBufExplMapWindowNavArrows=1
+"let g:miniBufExplMapCTabSwitchBufs=1
+"let g:miniBufExplModSelTarget=1
+"let g:miniBufExplSplitToEdge=1
+"let g:miniBufExplMaxSize = 10
+"let g:miniBufExplCycleArround = 1
+
+map <S-l> :bnext <CR>
+map <S-h> :bprev <CR>

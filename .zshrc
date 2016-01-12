@@ -30,11 +30,8 @@ autoload     run-help-svn
 
 # prompt
 setopt prompt_subst
-zstyle ':vcs_info:*' formats '[%F{green}%b%f]'
-zstyle ':vcs_info:*' actionformats '[%F{green}%b]'
 precmd() { vcs_info }
 PROMPT='%n$ '
-RPROMPT='${vcs_info_msg_0_}'
 
 
 # ls
@@ -134,3 +131,7 @@ fi
 
 # tmuxinator
 # source ~/.zsh/tmuxinator.zsh
+
+# rbenv
+export PATH="$HOME/.rbenv/bin:$PATH"
+eval "$(rbenv init - zsh)"
