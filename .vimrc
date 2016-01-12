@@ -467,13 +467,9 @@ nnoremap : ;
 "------------------------------------
 ""set minibfexp
 let g:miniBufExplMapWindowNavVim=1 "hjklで移動
-"let g:miniBufExplSplitBelow=0  " Put new window above
-"let g:miniBufExplMapWindowNavArrows=1
-"let g:miniBufExplMapCTabSwitchBufs=1
-"let g:miniBufExplModSelTarget=1
-"let g:miniBufExplSplitToEdge=1
-"let g:miniBufExplMaxSize = 10
-"let g:miniBufExplCycleArround = 1
-
-map <S-l> :bnext <CR>
-map <S-h> :bprev <CR>
+let g:miniBufExplMapWindowNavArrows=1
+let g:miniBufExplMapCTabSwitchBufs=1
+let g:miniBufExplModSelTarget=1
+let g:miniBufExplSplitToEdge=1
+nnoremap <silent> <S-h> :bprev <CR>
+nnoremap <silent> <S-l> :bnext <CR>
