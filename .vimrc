@@ -56,7 +56,6 @@ NeoBundle 'camelcasemotion'
 NeoBundle 'SQLUtilities'
 NeoBundle 'vim-ruby/vim-ruby'
 NeoBundle 'mattn/hahhah-vim'
-NeoBundle 'Lokaltog/vim-powerline'
 NeoBundle 'banyan/recognize_charcode.vim'
 " DumbBuf.vim : quickbufっぽくbufferを管理。 "<Leader>b<Space>でBufferList
 NeoBundle 'DumbBuf'
@@ -66,8 +65,6 @@ NeoBundle 'fholgado/minibufexpl.vim'
 NeoBundle 'errormarker.vim'
 " shows a git diff in the 'gutter' (sign column)
 NeoBundle 'airblade/vim-gitgutter'
-" ステータスラインをカッコよくする
-NeoBundle 'powerline/powerline'
 
 " }}}
 call neobundle#end()
@@ -413,17 +410,7 @@ set guifont=menlo:h11
 " ステータスライン StatusLine
 "-------------------------------------------------------------------------------
 set laststatus=2 " 常にステータスラインを表示
-"カーソルが何行目の何列目に置かれているかを表示する
-set ruler
-
-" powerlineのセットアップ
-python from powerline.vim import setup as powerline_setup
-python powerline_setup()
-python del powerline_setup
-
-set laststatus=2 " Always display the statusline in all windows
-set showtabline=2 " Always display the tabline, even if there is only one tab
-set noshowmode " Hide the default mode text (e.g. -- INSERT -- below the statusline)
+set ruler "カーソルが何行目の何列目に置かれているかを表示する
 
 "------------------------------------
 "" MiniBufExplorer
