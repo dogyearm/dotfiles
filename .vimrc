@@ -62,9 +62,10 @@ NeoBundle 'banyan/recognize_charcode.vim'
 NeoBundle 'DumbBuf'
 " タブエディタ風にバッファ管理ウィンドウを表示
 NeoBundle 'fholgado/minibufexpl.vim'
-
 " エラーがある場所をhilight
 NeoBundle 'errormarker.vim'
+" shows a git diff in the 'gutter' (sign column)
+NeoBundle 'airblade/vim-gitgutter'
 
 " }}}
 call neobundle#end()
@@ -306,6 +307,12 @@ nmap ye ;let @"=expand("<cword>")<CR>
 
 " Tabキーを空白に変換
 set expandtab
+
+" 検索語句のハイライ
+set hlsearch
+
+" 検索時に全て英小文字で入力した場合のみ区別を無視する
+set smartcase
 
 " コンマの後に自動的にスペースを挿入
 inoremap , ,<Space>
