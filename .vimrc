@@ -65,7 +65,7 @@ NeoBundle 'fholgado/minibufexpl.vim'
 NeoBundle 'errormarker.vim'
 " shows a git diff in the 'gutter' (sign column)
 NeoBundle 'airblade/vim-gitgutter'
-
+NeoBundle 'plasticboy/vim-markdown'
 " }}}
 call neobundle#end()
 
