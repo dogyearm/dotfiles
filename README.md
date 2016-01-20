@@ -9,6 +9,7 @@ Overview
 - [ ] maerkdownのリストを自動入力
 - [ ] vimのカーソルが全角文字に被った際、カーソルを綺麗に表示する
 - [ ] tmuxのpanelをマウスでクリックできるようにするマン
+- [ ] `git diff`に行番号を表示する
 
 ## Description
 
