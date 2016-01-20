@@ -193,6 +193,8 @@ nnoremap <silent> ,, :edit ~/.vimrc<CR>
 " US keyboard
 nnoremap ; :
 nnoremap : ;
+" ハイライトを解除
+nnoremap <ESC><ESC> :nohlsearch<CR>
 
 "-------------------------------------------------------------------------------
 " 表示 Apperance
