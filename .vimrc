@@ -163,7 +163,7 @@ set showmode                     " 現在のモードを表示
 set viminfo='50,<1000,s100,\"50  " viminfoファイルの設定
 set modelines=0                  " モードラインは無効
 set notitle                      " vimを使ってくれてありがとう
-set transparency=3
+set transparency=8
 " OSのクリップボードを使用する
 set clipboard+=unnamed
 " ターミナルでマウスを使用できるようにする
@@ -193,7 +193,7 @@ filetype plugin on
 nnoremap <silent> ,, :edit ~/.vimrc<CR>
 " US keyboard
 nnoremap ; :
-nnoremap : ;
+" "nnoremap : ;
 " ハイライトを解除
 nnoremap <ESC><ESC> :nohlsearch<CR>
 
@@ -424,6 +424,6 @@ let g:miniBufExplMapWindowNavArrows=1
 let g:miniBufExplMapCTabSwitchBufs=1
 let g:miniBufExplModSelTarget=1
 let g:miniBufExplSplitToEdge=1
-let g:dumbbuf_hotkey=';;'
+let g:dumbbuf_hotkey='b,'
 nnoremap <silent> <S-h> :bprev <CR>
 nnoremap <silent> <S-l> :bnext <CR>
