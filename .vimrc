@@ -66,6 +66,8 @@ NeoBundle 'errormarker.vim'
 " shows a git diff in the 'gutter' (sign column)
 NeoBundle 'airblade/vim-gitgutter'
 NeoBundle 'plasticboy/vim-markdown'
+" Emoji入力を簡単にする
+NeoBundle 'junegunn/vim-emoji'
 " }}}
 call neobundle#end()
 
@@ -196,6 +198,21 @@ nnoremap ; :
 " "nnoremap : ;
 " ハイライトを解除
 nnoremap <ESC><ESC> :nohlsearch<CR>
+
+"-------------------------------------------------------------------------------
+" junegunn/vim-emoji
+"-------------------------------------------------------------------------------
+
+" Using Emojis as Git Gutter symbols
+" silent! if emoji#available()
+"   let g:gitgutter_sign_added = emoji#for('small_blue_diamond')
+"   let g:gitgutter_sign_modified = emoji#for('small_orange_diamond')
+"   let g:gitgutter_sign_removed = emoji#for('small_red_triangle')
+"   let g:gitgutter_sign_modified_removed = emoji#for('collision')
+" endif
+
+" Emoji補完
+set completefunc=emoji#complete
 
 "-------------------------------------------------------------------------------
 " 表示 Apperance
