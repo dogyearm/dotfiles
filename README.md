@@ -12,6 +12,7 @@ Overview
 - [ ] `git diff`に行番号を表示する
 - [ ] vimの補完を活用する
 - [ ] Emojiを補完入力出来るようにする
+- [ ] vimでのコマンドライン環境を強化する
 
 ## Description
 
