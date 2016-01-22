@@ -18,7 +18,6 @@
 "-------------------------------------------------------------------------------
 " 基本設定 Basics
 "-------------------------------------------------------------------------------
-" jkで抜ける
 inoremap jk <Esc>
 vnoremap jk <Esc>
 let mapleader = ","              " キーマップリーダー
@@ -39,19 +38,13 @@ set viminfo='50,<1000,s100,\"50  " viminfoファイルの設定
 set modelines=0                  " モードラインは無効
 set notitle                      " vimを使ってくれてありがとう
 set transparency=9
-" OSのクリップボードを使用する
 set clipboard+=unnamed
-" ターミナルでマウスを使用できるようにする
 set mouse=a
 set guioptions+=a
 set ttymouse=xterm2
-"ヤンクした文字は、システムのクリップボードに入れる"
 set clipboard=unnamed
-" 挿入モードでCtrl+kを押すとクリップボードの内容を貼り付けられるようにする "
-imap <C-p>  <ESC>"*pa
-" Ev/Rvでvimrcの編集と反映
-command! Ev edit $MYVIMRC
-command! Rv source $MYVIMRC
+nnoremap <silent> ,, :edit $MYVIMRC<CR>
+nnoremap <silent> .. :source $MYVIMRC<CR>
 set helpfile=$VIMRUNTIME/doc/help.txt
 " Some Linux distributions set filetype in /etc/vimrc.
 "   " Clear filetype flags before changing runtimepath to force Vim to
@@ -64,8 +57,6 @@ endif
 let goroot = substitute(system("go env GOROOT"),  '\n$',  '',  '')
 " ファイルタイプ判定をon
 filetype plugin on
-" vimrc簡単編集
-nnoremap <silent> ,, :edit ~/.vimrc<CR>
 " US keyboard
 nnoremap ; :
 " "nnoremap : ;
@@ -200,7 +191,7 @@ map  :call SmoothScroll("u",1, 1)<CR>
 "------------------------------------
 " disable default shortcut mapping and re-define to <Leader>ec
 let g:errormarker_disablemappings = 1
-nmap <silent> <unique> <Leader>ec :ErrorAtCursor<CR>
+" nmap <silent> <unique> <Leader>ec :ErrorAtCursor<CR>
 
 "-------------------------------------------------------------------------------
 " junegunn/vim-emoji
