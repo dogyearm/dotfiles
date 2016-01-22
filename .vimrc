@@ -15,6 +15,62 @@
 " dogyearm
 " GitHub -> https://github.com/dogyearm
 "
+"-------------------------------------------------------------------------------
+" 基本設定 Basics
+"-------------------------------------------------------------------------------
+" jkで抜ける
+inoremap jk <Esc>
+vnoremap jk <Esc>
+let mapleader = ","              " キーマップリーダー
+set scrolloff=5                  " スクロール時の余白確保
+set textwidth=0                  " 一行に長い文章を書いていても自動折り返しをしない
+set nobackup                     " バックアップ取らない
+set autoread                     " 他で書き換えられたら自動で読み直す
+set noswapfile                   " スワップファイル作らない
+set hidden                       " 編集中でも他のファイルを開けるようにする
+set backspace=indent,eol,start   " バックスペースでなんでも消せるように
+set formatoptions=lmoq           " テキスト整形オプション，マルチバイト系を追加
+set vb t_vb=                     " ビープをならさない
+set browsedir=buffer             " Exploreの初期ディレクトリ
+set whichwrap=b,s,h,l,<,>,[,]    " カーソルを行頭、行末で止まらないようにする
+set showcmd                      " コマンドをステータス行に表示
+set showmode                     " 現在のモードを表示
+set viminfo='50,<1000,s100,\"50  " viminfoファイルの設定
+set modelines=0                  " モードラインは無効
+set notitle                      " vimを使ってくれてありがとう
+set transparency=9
+" OSのクリップボードを使用する
+set clipboard+=unnamed
+" ターミナルでマウスを使用できるようにする
+set mouse=a
+set guioptions+=a
+set ttymouse=xterm2
+"ヤンクした文字は、システムのクリップボードに入れる"
+set clipboard=unnamed
+" 挿入モードでCtrl+kを押すとクリップボードの内容を貼り付けられるようにする "
+imap <C-p>  <ESC>"*pa
+" Ev/Rvでvimrcの編集と反映
+command! Ev edit $MYVIMRC
+command! Rv source $MYVIMRC
+set helpfile=$VIMRUNTIME/doc/help.txt
+" Some Linux distributions set filetype in /etc/vimrc.
+"   " Clear filetype flags before changing runtimepath to force Vim to
+"   reload them.
+if exists("g:did_load_filetypes")
+  filetype off
+  filetype plugin indent off
+endif
+" GoLangのpluginをruntime pathへ
+let goroot = substitute(system("go env GOROOT"),  '\n$',  '',  '')
+" ファイルタイプ判定をon
+filetype plugin on
+" vimrc簡単編集
+nnoremap <silent> ,, :edit ~/.vimrc<CR>
+" US keyboard
+nnoremap ; :
+" "nnoremap : ;
+" ハイライトを解除
+nnoremap <ESC><ESC> :nohlsearch<CR>
 
 "-------------------------------------------------------------------------------
 " NeoBundleSetting
@@ -84,7 +140,7 @@ colorscheme solarized
 let g:unite_enable_start_insert = 1
 let g:unite_enable_split_vertically = 0
 let g:unite_winwidth = 40
-let g:unite_source_file_mru_long_limit = 100
+let g:unite_source_file_mru_long_limit = 200
 call unite#custom_source('file_rec', 'ignore_pattern', 'vendor/\|tmp/\|log/')
 call unite#custom_source('file_rec/git', 'ignore_pattern', 'vendor/\|tmp/\|log/') " バッファ一覧
 " バッファ一覧
@@ -98,8 +154,9 @@ nnoremap <silent> ,um :<C-u>Unite file_mru <CR>
 nnoremap <silent> ,uu :<C-u>Unite buffer file_mru<CR>
 nnoremap <silent> ,ug :<C-u>Unite grep/git:. -no-quit<CR>
 " ESCキーを2回押すと終了する
-au FileType unite nnoremap <silent> <buffer> <ESC><ESC> q
-au FileType unite inoremap <silent> <buffer> <ESC><ESC> <ESC>q
+au FileType unite nnoremap <silent> <buffer> <ESC><ESC> :q<CR>
+au FileType unite inoremap <silent> <buffer> <ESC><ESC> <ESC>:q<CR>
+
 " Rails Key bind
 nnoremap <silent> ,urc :<C-u>Unite file_rec:app/controllers/ -input=!admin<CR><Space>
 nnoremap <silent> ,urfc :<C-u>Unite file file/new -input=app/controllers/ <CR>
@@ -144,60 +201,6 @@ map  :call SmoothScroll("u",1, 1)<CR>
 " disable default shortcut mapping and re-define to <Leader>ec
 let g:errormarker_disablemappings = 1
 nmap <silent> <unique> <Leader>ec :ErrorAtCursor<CR>
-
-"-------------------------------------------------------------------------------
-" 基本設定 Basics
-"-------------------------------------------------------------------------------
-let mapleader = ","              " キーマップリーダー
-set scrolloff=5                  " スクロール時の余白確保
-set textwidth=0                  " 一行に長い文章を書いていても自動折り返しをしない
-set nobackup                     " バックアップ取らない
-set autoread                     " 他で書き換えられたら自動で読み直す
-set noswapfile                   " スワップファイル作らない
-set hidden                       " 編集中でも他のファイルを開けるようにする
-set backspace=indent,eol,start   " バックスペースでなんでも消せるように
-set formatoptions=lmoq           " テキスト整形オプション，マルチバイト系を追加
-set vb t_vb=                     " ビープをならさない
-set browsedir=buffer             " Exploreの初期ディレクトリ
-set whichwrap=b,s,h,l,<,>,[,]    " カーソルを行頭、行末で止まらないようにする
-set showcmd                      " コマンドをステータス行に表示
-set showmode                     " 現在のモードを表示
-set viminfo='50,<1000,s100,\"50  " viminfoファイルの設定
-set modelines=0                  " モードラインは無効
-set notitle                      " vimを使ってくれてありがとう
-set transparency=9
-" OSのクリップボードを使用する
-set clipboard+=unnamed
-" ターミナルでマウスを使用できるようにする
-set mouse=a
-set guioptions+=a
-set ttymouse=xterm2
-"ヤンクした文字は、システムのクリップボードに入れる"
-set clipboard=unnamed
-" 挿入モードでCtrl+kを押すとクリップボードの内容を貼り付けられるようにする "
-imap <C-p>  <ESC>"*pa
-" Ev/Rvでvimrcの編集と反映
-command! Ev edit $MYVIMRC
-command! Rv source $MYVIMRC
-set helpfile=$VIMRUNTIME/doc/help.txt
-" Some Linux distributions set filetype in /etc/vimrc.
-"   " Clear filetype flags before changing runtimepath to force Vim to
-"   reload them.
-if exists("g:did_load_filetypes")
-  filetype off
-  filetype plugin indent off
-endif
-" GoLangのpluginをruntime pathへ
-let goroot = substitute(system("go env GOROOT"),  '\n$',  '',  '')
-" ファイルタイプ判定をon
-filetype plugin on
-" vimrc簡単編集
-nnoremap <silent> ,, :edit ~/.vimrc<CR>
-" US keyboard
-nnoremap ; :
-" "nnoremap : ;
-" ハイライトを解除
-nnoremap <ESC><ESC> :nohlsearch<CR>
 
 "-------------------------------------------------------------------------------
 " junegunn/vim-emoji
@@ -292,7 +295,8 @@ if has("autocmd")
   autocmd FileType cs         setlocal sw=4 sts=4 ts=4 et
   autocmd FileType css        setlocal sw=2 sts=2 ts=2 et
   autocmd FileType diff       setlocal sw=4 sts=4 ts=4 et
-  autocmd FileType eruby      setlocal sw=4 sts=4 ts=4 et
+  autocmd FileType eruby      setlocal sw=2 sts=2 ts=2 et
+  autocmd FileType erb        setlocal sw=2 sts=2 ts=2 et
   autocmd FileType html       setlocal sw=2 sts=2 ts=2 et
   autocmd FileType java       setlocal sw=4 sts=4 ts=4 et
   autocmd FileType javascript setlocal sw=2 sts=2 ts=2 et
