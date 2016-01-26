@@ -131,10 +131,14 @@ colorscheme solarized
 let g:unite_enable_start_insert = 1
 let g:unite_enable_split_vertically = 0
 let g:unite_winwidth = 40
-let g:unite_source_file_mru_long_limit = 200
+let g:unite_source_rec_min_cache_files = 100
+let g:unite_source_rec_max_cache_files = 5000
+let g:unite_source_file_mru_long_limit = 6000
+let g:unite_source_file_mru_limit = 300
+let g:unite_source_directory_mru_long_limit = 6000
 call unite#custom_source('file_rec', 'ignore_pattern', 'vendor/\|tmp/\|log/')
 call unite#custom_source('file_rec/git', 'ignore_pattern', 'vendor/\|tmp/\|log/') " バッファ一覧
-" バッファ一覧
+"" バッファ一覧
 nnoremap <silent> ,ub :<C-u>Unite buffer<CR>
 " ファイル一覧
 nnoremap <silent> ,uf :<C-u>UniteWithBufferDir -buffer-name=files file file/new<CR>
