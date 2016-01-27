@@ -37,7 +37,7 @@ set showmode                     " 現在のモードを表示
 set viminfo='50,<1000,s100,\"50  " viminfoファイルの設定
 set modelines=0                  " モードラインは無効
 set notitle                      " vimを使ってくれてありがとう
-set transparency=9
+set transparency=2
 set clipboard+=unnamed
 set mouse=a
 set guioptions+=a

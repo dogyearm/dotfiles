@@ -6,6 +6,7 @@
     pager = less -q -R
     excludesfile = ~/.gitignore
     preloadindex = true
+    editor = vim
 
 [color]
     ui = auto
