@@ -18,8 +18,6 @@
 "-------------------------------------------------------------------------------
 " 基本設定 Basics
 "-------------------------------------------------------------------------------
-inoremap jk <Esc>
-vnoremap jk <Esc>
 let mapleader = ","              " キーマップリーダー
 set scrolloff=5                  " スクロール時の余白確保
 set textwidth=0                  " 一行に長い文章を書いていても自動折り返しをしない
@@ -115,6 +113,8 @@ NeoBundle 'airblade/vim-gitgutter'
 NeoBundle 'plasticboy/vim-markdown'
 " Emoji入力を簡単にする
 NeoBundle 'junegunn/vim-emoji'
+" 俺達のemmet
+NeoBundle 'mattn/emmet-vim'
 " }}}
 call neobundle#end()
 
@@ -268,7 +268,7 @@ set ambiwidth=double
 " インデント Indent
 "-------------------------------------------------------------------------------
 set autoindent   " 自動でインデント
-"set paste        " ペースト時にautoindentを無効に(onにするとautocomplpop.vimが動かない)
+set paste        " ペースト時にautoindentを無効に(onにするとautocomplpop.vimが動かない)
 set smartindent  " 新しい行を開始したときに、新しい行のインデントを現在行と同じ量にする。
 set cindent      " Cプログラムファイルの自動インデントを始める
 
@@ -443,3 +443,6 @@ let g:miniBufExplSplitToEdge=1
 let g:dumbbuf_hotkey='b,'
 nnoremap <silent> <S-h> :bprev <CR>
 nnoremap <silent> <S-l> :bnext <CR>
+
+" emmetのキーバインドを変更
+let g:user_emmet_leader_key='<C-e>'
