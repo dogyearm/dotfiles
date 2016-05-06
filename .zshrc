@@ -133,5 +133,8 @@ fi
 # source ~/.zsh/tmuxinator.zsh
 
 # rbenv
-export PATH="$HOME/.rbenv/bin:$PATH"
-eval "$(rbenv init - zsh)"
+#export PATH="$HOME/.rbenv/bin:$PATH"
+#eval "$(rbenv init - zsh)"
+
+# nodebrew
+export PATH=$HOME/.nodebrew/current/bin:$PATH

@@ -10,3 +10,6 @@
 #     \::/__/        /:/  /       \::/  /        /:/  /       |:|  |        \:\__\
 #      ~~            \/__/         \/__/         \/__/         \|__|         \/__/
 
+
+export NVM_DIR="/Users/dogyear/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
