@@ -1,0 +1,13 @@
+[user]
+  name = dogyearm
+  email = dogyear.iwmt@gmail.com
+
+[core]
+  pager = less -q -R
+  excludesfile = ~/.gitignore
+  preloadindex = true
+  editor = vim
+  ui = auto
+  fscache = true
+[alias]
+    lg  = log --graph --date-order --all --pretty=format:'%h %Cred%d %Cgreen%ad %Cblue%cn %Creset%s' --date=short
