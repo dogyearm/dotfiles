@@ -22,4 +22,5 @@ setopt prompt_subst
 PROMPT='%n$ '
 
 # Local
-[ -f ~/.zshrc.local ] && source ~/.zshrc.local
+[ ! -f ~/.zshrc.local ] && echo "# Local Setting" >> ~/.zshrc.local
+source ~/.zshrc.local

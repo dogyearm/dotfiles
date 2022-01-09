@@ -20,6 +20,7 @@ set modelines=0                  " モードラインは無効
 set notitle                      " vimを使ってくれてありがとう
 set ttimeoutlen=10               " キーコードシーケンスが終了するのを待つ時間を短くする
 nnoremap <silent> ,, :edit $MYVIMRC<CR>
+nnoremap <silent> ,,, :edit ~/.vimrc.local<CR>
 nnoremap <silent> .. :source $MYVIMRC<CR>
 nnoremap ; :
 set clipboard+=unnamed
@@ -250,6 +251,7 @@ nnoremap <silent> <S-l> :bnext <CR>
 "------------------------------------
 "" vimrc.local
 "------------------------------------
-if filereadable(expand('~/.vimrc.local'))
-  source ~/.vimrc.local
+if ! filereadable(expand('~/.vimrc.local'))
+  call writefile(['" Local setting'], $HOME."/.vimrc.local")
 endif
+source ~/.vimrc.local

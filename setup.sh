@@ -24,13 +24,8 @@ then
   brew install tmux
 fi
 
-touch "$HOME"/dotfiles/.zshrc.local
-touch "$HOME"/dotfiles/.vimrc.local
-
 # Symlink
 ln -snfv "$HOME"/dotfiles/.zshrc "$HOME"/.zshrc
-ln -snfv "$HOME"/dotfiles/.zshrc.local "$HOME"/.zshrc.local
 ln -snfv "$HOME"/dotfiles/.vimrc "$HOME"/.vimrc
-ln -snfv "$HOME"/dotfiles/.vimrc.local "$HOME"/.vimrc.local
 ln -snfv "$HOME"/dotfiles/.tmux.conf "$HOME"/.tmux.conf
 ln -snfv "$HOME"/dotfiles/.gitconfig "$HOME"/.gitconfig
