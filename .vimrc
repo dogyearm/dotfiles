@@ -20,7 +20,7 @@ set modelines=0                  " モードラインは無効
 set notitle                      " vimを使ってくれてありがとう
 set ttimeoutlen=10               " キーコードシーケンスが終了するのを待つ時間を短くする
 nnoremap <silent> ,, :edit $MYVIMRC<CR>
-nnoremap <silent> ,,, :edit ~/.vimrc.local<CR>
+nnoremap <silent> ,,, :edit ~/.zshrc<CR>
 nnoremap <silent> .. :source $MYVIMRC<CR>
 nnoremap ; :
 set clipboard+=unnamed

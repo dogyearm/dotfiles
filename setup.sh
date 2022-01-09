@@ -24,6 +24,15 @@ then
   brew install tmux
 fi
 
+# Install fzf https://github.com/junegunn/fzf
+if [[ ! -f ~/.fzf ]]; then
+  git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
+  ~/.fzf/install
+fi
+
+# Update fzf
+[ -f ~/.fzf ] && cd ~/.fzf && git pull && ./install
+
 # Symlink
 ln -snfv "$HOME"/dotfiles/.zshrc "$HOME"/.zshrc
 ln -snfv "$HOME"/dotfiles/.vimrc "$HOME"/.vimrc
