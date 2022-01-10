@@ -157,9 +157,8 @@ set viminfo='50,<1000,s100,\"50  " viminfoファイルの設定
 set modelines=0                  " モードラインは無効
 set notitle                      " vimを使ってくれてありがとう
 set ttimeoutlen=10               " キーコードシーケンスが終了するのを待つ時間を短くする
-nnoremap <silent> ,, :edit $MYVIMRC<CR>
+nnoremap <silent> ,, :edit $MYVIMRC<BS>~/.zshrc<CR>
 nnoremap <silent> .. :source $MYVIMRC<CR>
-nnoremap <silent> ,,, :edit ~/.zshrc<CR>
 nnoremap ; :
 set clipboard+=unnamed
 
@@ -277,3 +276,11 @@ if ! filereadable(expand('~/.vimrc.local'))
   call writefile(['" Local setting'], $HOME."/.vimrc.local")
 endif
 source ~/.vimrc.local
+
+
+"-------------------------------------------------------------------------------
+" Method
+"-------------------------------------------------------------------------------
+function! s:date()
+  execute ":e ~/note/".strftime('%Y%m%d').".md"
+endfunction
