@@ -79,7 +79,11 @@ FZF-EOF"
 ###############
 # ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=8'
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#0000ff,bg=cyan,bold,underline"
-bindkey '\t' end-of-line # タブで選択
+bindkey '\t' autosuggest-accept # タブで選択
+# TODO:
+# autosuggest-accept を中断
+# あいまい検索に対応
+
 
 ###############
 ### b4b4r07/enhancd
