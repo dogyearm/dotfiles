@@ -77,8 +77,7 @@ FZF-EOF"
 ###############
 ### zsh-users/zsh-autosuggestion
 ###############
-# ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=8'
-ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#0000ff,bg=cyan,bold,underline"
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=242'
 bindkey '\t' autosuggest-accept # タブで選択
 # TODO:
 # autosuggest-accept を中断
