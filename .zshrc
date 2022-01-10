@@ -12,6 +12,7 @@ zinit light zsh-users/zsh-autosuggestions    # 補完
 zinit light zdharma-continuum/fast-syntax-highlighting # シンタックスハイライト
 zinit ice proto'git' pick'init.sh'
 zinit light b4b4r07/enhancd  # ディレクトリ検索
+# zinit light zsh-abbrev-alias # パイプ先のコマンドを入力
 
 # General
 umask 022
@@ -78,11 +79,9 @@ FZF-EOF"
 ### zsh-users/zsh-autosuggestion
 ###############
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=242'
-bindkey '\t' autosuggest-accept # タブで選択
-# TODO:
-# autosuggest-accept を中断
-# あいまい検索に対応
-
+bindkey '\t' autosuggest-accept  # Tab
+# bindkey '\hoge' autosuggest-clear
+# bindkey '\hgoe' autosuggest-execute
 
 ###############
 ### b4b4r07/enhancd
@@ -91,8 +90,7 @@ bindkey '\t' autosuggest-accept # タブで選択
 ###############
 export ENHANCD_FILTER=fzf
 export ENHANCD_DISABLE_DOT=1
-export ENHANCD_HOOK_AFTER_CD=ls
-
+export ENHANCD_HOOK_AFTER_CD="ls -la1"
 
 ###############
 ### Local
