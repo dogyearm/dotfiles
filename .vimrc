@@ -157,10 +157,22 @@ set viminfo='50,<1000,s100,\"50  " viminfoファイルの設定
 set modelines=0                  " モードラインは無効
 set notitle                      " vimを使ってくれてありがとう
 set ttimeoutlen=10               " キーコードシーケンスが終了するのを待つ時間を短くする
-nnoremap <silent> ,, :edit $MYVIMRC<BS>~/.zshrc<CR>
-nnoremap <silent> .. :source $MYVIMRC<CR>
+
+nnoremap <silent> ,, :call<SID>editRc()<CR>
+nnoremap <silent> ,, :call<SID>loadRc()<CR>
 nnoremap ; :
 set clipboard+=unnamed
+
+function! s:editRc()
+  execute ":e ".$MYVIMRC
+  execute ":e ~/.zshrc"
+  execute ":e ~/todo/".strftime('%Y%m%d').".md"
+endfunction
+
+function! s:loadRcc()
+  execute ":source ".$MYVIMRC
+  execute ":source ~/.zshrc"
+endfunction
 
 "-------------------------------------------------------------------------------
 " 表示 Apperance
@@ -281,6 +293,3 @@ source ~/.vimrc.local
 "-------------------------------------------------------------------------------
 " Method
 "-------------------------------------------------------------------------------
-function! s:date()
-  execute ":e ~/note/".strftime('%Y%m%d').".md"
-endfunction
