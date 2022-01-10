@@ -7,8 +7,10 @@ source "$HOME/.local/share/zinit/zinit.git/zinit.zsh"
 autoload -Uz _zinit
 (( ${+_comps} )) && _comps[zinit]=_zinit
 
-zinit light b4b4r07/ultimate  # Theme
-zinit light zsh-users/zsh-autosuggestions # 補完
+zinit light b4b4r07/ultimate                 # Theme
+zinit light zsh-users/zsh-autosuggestions    # 補完
+zinit light zdharma-continuum/fast-syntax-highlighting # シンタックスハイライト
+zinit ice proto'git' pick'init.sh'
 zinit light b4b4r07/enhancd  # ディレクトリ検索
 
 # General
@@ -67,8 +69,27 @@ flog() {
 FZF-EOF"
 }
 
+###############
+### zdharma-continuum/fast-syntax-highlighting
+###############
+# fast-theme -t safari
 
-# vim $(fzf)
+###############
+### zsh-users/zsh-autosuggestion
+###############
+# ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=8'
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#0000ff,bg=cyan,bold,underline"
+bindkey '\t' end-of-line # タブで選択
+
+###############
+### b4b4r07/enhancd
+### 高速 cd
+### https://qiita.com/b4b4r07/items/2cf90da00a4c2c7b7e60#%E7%89%B9%E5%BE%B4
+###############
+export ENHANCD_FILTER=fzf
+export ENHANCD_DISABLE_DOT=1
+export ENHANCD_HOOK_AFTER_CD=ls
+
 
 ###############
 ### Local

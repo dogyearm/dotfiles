@@ -159,7 +159,7 @@ set notitle                      " vimを使ってくれてありがとう
 set ttimeoutlen=10               " キーコードシーケンスが終了するのを待つ時間を短くする
 
 nnoremap <silent> ,, :call<SID>editRc()<CR>
-nnoremap <silent> ,, :call<SID>loadRc()<CR>
+nnoremap <silent> .. :call<SID>loadRc()<CR>
 nnoremap ; :
 set clipboard+=unnamed
 
@@ -169,7 +169,7 @@ function! s:editRc()
   execute ":e ~/todo/".strftime('%Y%m%d').".md"
 endfunction
 
-function! s:loadRcc()
+function! s:loadRc()
   execute ":source ".$MYVIMRC
   execute ":source ~/.zshrc"
 endfunction
