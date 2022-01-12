@@ -24,6 +24,10 @@ then
   brew install tmux
 fi
 
+if [[ ! -f ~/.tmux ]]; then
+  git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+fi
+
 # Install fzf https://github.com/junegunn/fzf
 if [[ ! -f ~/.fzf ]]; then
   git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
@@ -31,7 +35,7 @@ if [[ ! -f ~/.fzf ]]; then
 fi
 
 # Update fzf
-[ -f ~/.fzf ] && cd ~/.fzf && git pull && ./install
+# [ -f ~/.fzf ] && cd ~/.fzf && git pull && ./install
 
 # Symlink
 ln -snfv "$HOME"/dotfiles/.zshrc "$HOME"/.zshrc
