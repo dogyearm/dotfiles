@@ -7,8 +7,10 @@ source "$HOME/.local/share/zinit/zinit.git/zinit.zsh"
 autoload -Uz _zinit
 (( ${+_comps} )) && _comps[zinit]=_zinit
 
-zinit light b4b4r07/ultimate                 # Theme
-zinit light zsh-users/zsh-autosuggestions    # 補完
+# Theme
+zinit light b4b4r07/ultimate                 
+
+zinit light zsh-users/zsh-autosuggestions    
 zinit light zdharma-continuum/fast-syntax-highlighting # シンタックスハイライト
 zinit ice proto'git' pick'init.sh'
 zinit light b4b4r07/enhancd  # ディレクトリ検索
@@ -21,6 +23,7 @@ bindkey -e
 
 # Aliases
 alias gst='git status --short --branch'
+alias vimf='vim $(fzf)'
 
 # Prompto
 setopt prompt_subst
@@ -90,7 +93,7 @@ bindkey '\t' autosuggest-accept  # Tab
 ###############
 export ENHANCD_FILTER=fzf
 export ENHANCD_DISABLE_DOT=1
-export ENHANCD_HOOK_AFTER_CD="ls -la1"
+export ENHANCD_HOOK_AFTER_CD="ls"
 
 ###############
 ### Local

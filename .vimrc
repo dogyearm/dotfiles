@@ -268,6 +268,7 @@ endif
 set expandtab                       " Tabキーを空白に変換
 set hlsearch                        " 検索語句のハイライ
 autocmd BufWritePre * :%s/\t/  /ge  " 保存時にtabをスペースに変換する
+autocmd BufWritePre * :%s/\s\+$//e  " 保存時に行末のスペースを削除する
 
 " 括弧を自動補完
 " inoremap { {}<LEFT>
