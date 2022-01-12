@@ -166,12 +166,14 @@ set clipboard+=unnamed
 function! s:editRc()
   execute ":e ".$MYVIMRC
   execute ":e ~/.zshrc"
+  execute ":e ~/.tmux.conf"
   execute ":e ~/todo/".strftime('%Y%m%d').".md"
 endfunction
 
 function! s:loadRc()
   execute ":source ".$MYVIMRC
   execute ":source ~/.zshrc"
+  " execute ":source ~/.tmux.conf"
 endfunction
 
 "-------------------------------------------------------------------------------

@@ -1,4 +1,4 @@
-# install zinit
+# Install zinit
 if [[ ! -f $HOME/.local/share/zinit/zinit.git/zinit.zsh ]]; then
     command mkdir -p "$HOME/.local/share/zinit" && command chmod g-rwX "$HOME/.local/share/zinit"
     command git clone https://github.com/zdharma-continuum/zinit "$HOME/.local/share/zinit/zinit.git" && \
@@ -8,9 +8,9 @@ autoload -Uz _zinit
 (( ${+_comps} )) && _comps[zinit]=_zinit
 
 # Theme
-zinit light b4b4r07/ultimate                 
+zinit light b4b4r07/ultimate
 
-zinit light zsh-users/zsh-autosuggestions    
+zinit light zsh-users/zsh-autosuggestions
 zinit light zdharma-continuum/fast-syntax-highlighting # シンタックスハイライト
 zinit ice proto'git' pick'init.sh'
 zinit light b4b4r07/enhancd  # ディレクトリ検索
