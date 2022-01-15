@@ -24,6 +24,8 @@ Plug 'kchmck/vim-coffee-script'
 Plug 'tomlion/vim-solidity'
 Plug 'posva/vim-vue'
 Plug 'leafgarland/typescript-vim'
+Plug 'godlygeek/tabular'
+Plug 'plasticboy/vim-markdown'
 
 " theme
 Plug 'altercation/vim-colors-solarized'
@@ -167,7 +169,8 @@ function! s:editRc()
   execute ":e ".$MYVIMRC
   execute ":e ~/.zshrc"
   execute ":e ~/.tmux.conf"
-  execute ":e ~/todo/".strftime('%Y%m%d').".md"
+  execute ":e ~/memo/".strftime('%Y%m%d').".md"
+  execute ":cd ~/memo"
 endfunction
 
 function! s:loadRc()
