@@ -37,6 +37,13 @@ fi
 # Update fzf
 # [ -f ~/.fzf ] && cd ~/.fzf && git pull && ./install
 
+# Install ripgrep
+# https://github.com/BurntSushi/ripgrep#installation
+if ! [ -x /usr/local/bin/rg ] >/dev/null 2>&1
+then
+  brew install ripgrep
+fi
+
 # Symlink
 ln -snfv "$HOME"/dotfiles/.zshrc "$HOME"/.zshrc
 ln -snfv "$HOME"/dotfiles/.vimrc "$HOME"/.vimrc

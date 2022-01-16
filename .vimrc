@@ -14,7 +14,7 @@ call plug#begin()
 " general
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
-Plug 'Shougo/unite.vim'
+Plug 'yuki-ycino/fzf-preview.vim', { 'branch': 'release/rpc' }
 
 " highlight
 Plug 'vim-ruby/vim-ruby'
@@ -32,7 +32,6 @@ Plug 'junegunn/seoul256.vim'
 Plug 'nanotech/jellybeans.vim'
 
 " etc
-Plug 'fholgado/minibufexpl.vim'
 Plug 'airblade/vim-gitgutter'
 " Plug 'neoclide/coc.nvim' " vimがIDEになってしまうプラグイン。
 " Plug 'junegunn/vim-easy-align'
@@ -52,8 +51,16 @@ colorscheme solarized
 " If installed using git
 set rtp+=~/.fzf
 
-let $FZF_DEFAULT_OPTS="--layout=reverse"
+let $EZF_DEFAULT_OPTS="--layout=reverse"
 let $FZF_DEFAULT_COMMAND="rg --files --hidden --glob '!.git/**'"
+let g:fzf_preview_window = ['right:50%', 'ctrl-/']
+
+" Preview window on the upper side of the window with 40% height,
+" hidden by default, ctrl-/ to toggle
+let g:fzf_preview_window = ['up:40%:hidden', 'ctrl-/']
+
+" Empty value to disable preview window altogether
+let g:fzf_preview_window = []
 let g:fzf_layout = {'up':'~90%', 'window': { 'width': 0.8, 'height': 0.8,'yoffset':0.5,'xoffset': 0.5, 'border': 'sharp' } }
 
 let mapleader = "\<Space>"
@@ -66,63 +73,17 @@ nnoremap <silent> <leader>b :Buffers<CR>
 nnoremap <silent> <leader>h :History<CR>
 nnoremap <silent> <leader>r :Rg<CR>
 
-"-------------------------------------------------------------------------------
-" unite.vim
-"-------------------------------------------------------------------------------
-let g:unite_enable_start_insert = 1
-let g:unite_enable_split_vertically = 0
-let g:unite_winwidth = 40
-let g:unite_source_rec_min_cache_files = 100
-let g:unite_source_rec_max_cache_files = 5000
-let g:unite_source_file_mru_long_limit = 6000
-let g:unite_source_file_mru_limit = 300
-let g:unite_source_directory_mru_long_limit = 6000
-call unite#custom_source('file_rec', 'ignore_pattern', 'vendor/\|tmp/\|log/')
-call unite#custom_source('file_rec/git', 'ignore_pattern', 'vendor/\|tmp/\|log/') " バッファ一覧
+" [Buffers] Jump to the existing window if possible
+let g:fzf_buffers_jump = 1
 
-nnoremap <silent> ,ub :<C-u>Unite buffer<CR>
-nnoremap <silent> ,uf :<C-u>UniteWithBufferDir -buffer-name=files file file/new<CR>
-nnoremap <silent> ,ut :<C-u>Unite -buffer-name=files buffer file_mru file_rec/async file/new  <CR>
-nnoremap <silent> ,um :<C-u>Unite file_mru <CR>
-nnoremap <silent> ,uu :<C-u>Unite buffer file_mru<CR>
-nnoremap <silent> ,ug :<C-u>Unite grep/git:. -no-quit<CR>
-au FileType unite nnoremap <silent> <buffer> <ESC><ESC> :q<CR>
-au FileType unite inoremap <silent> <buffer> <ESC><ESC> <ESC>:q<CR>
-set redrawtime=10000
-nnoremap <silent> ,urc :<C-u>Unite file_rec:app/controllers/ -input=!admin<CR><Space>
-nnoremap <silent> ,urfc :<C-u>Unite file file/new -input=app/controllers/ <CR>
-nnoremap <silent> ,urm :<C-u>Unite file_rec:app/models/ -input=!admin <CR><Space>
-nnoremap <silent> ,urfm :<C-u>Unite file file/new -input=app/models/ <CR>
-nnoremap <silent> ,urma :<C-u>Unite file_rec:app/mailers/ -input=!admin <CR><Space>
-nnoremap <silent> ,urfma :<C-u>Unite file file/new -input=app/mailers/ <CR>
-nnoremap <silent> ,urd :<C-u>Unite file_rec:db/ -input=!admin <CR><Space>
-nnoremap <silent> ,urfd :<C-u>Unite file file/new -input=db/ <CR>
-nnoremap <silent> ,urv :<C-u>Unite file_rec:app/views/ -input=!admin <CR><Space>
-nnoremap <silent> ,urfv :<C-u>Unite file file/new -input=app/views/ <CR>
-nnoremap <silent> ,urs :<C-u>Unite file_rec:frontend/src/stylesheets/ <CR>
-nnoremap <silent> ,urfs :<C-u>Unite file file/new -input=frontend/src/stylesheets/ <CR>
-nnoremap <silent> ,urj :<C-u>Unite file_rec: <CR>
-nnoremap <silent> ,urfj :<C-u>Unite file file/new -input= <CR>
-nnoremap <silent> ,uro :<C-u>Unite file_rec:config/ <CR>
-nnoremap <silent> ,urfo :<C-u>Unite file file/new -input=config/ <CR>
-nnoremap <silent> ,url :<C-u>Unite file_rec:lib/ <CR>
-nnoremap <silent> ,urfl :<C-u>Unite file file/new -input=lib/ <CR>
-nnoremap <silent> ,urr :<C-u>Unite file_rec:spec/ <CR>
-nnoremap <silent> ,urfr :<C-u>Unite file file/new -input=spec/ <CR>
-nnoremap <silent> ,urt :<C-u>Unite file_rec:app/tasks/ <CR>
-nnoremap <silent> ,urfre :<C-u>Unite file file/new -input=app/repositories/ <CR>
-nnoremap <silent> ,urre :<C-u>Unite file_rec:app/repositories/ <CR>
-nnoremap <silent> ,urfse :<C-u>Unite file file/new -input=app/services/ <CR>
-nnoremap <silent> ,urse :<C-u>Unite file_rec:app/services/ <CR>
-nnoremap <silent> ,urft :<C-u>Unite file file/new -input=app/tasks/ <CR>
-nnoremap <silent> ,uru :<C-u>Unite file_rec:app/utils/ <CR>
-nnoremap <silent> ,urfu :<C-u>Unite file file/new -input=app/utils/ <CR>
-nnoremap <silent> ,urva :<C-u>Unite file_rec:app/validators/ -input=!admin<CR><Space>
-nnoremap <silent> ,urfva :<C-u>Unite file file/new -input=app/validators/ <CR>
-nnoremap <silent> ,ura :<C-u>Unite file_rec:app/apis/ -input=!admin<CR><Space>
-nnoremap <silent> ,urfa :<C-u>Unite file file/new -input=app/apis/ <CR>
-noremap <silent> ,urn :<C-u>Unite file_rec:frontend/src/ -input=!admin<CR><Space>
-nnoremap <silent> ,urfn :<C-u>Unite file file/new -input=frontend/src/ <CR>
+" [[B]Commits] Customize the options used by 'git log':
+let g:fzf_commits_log_options = '--graph --color=always --format="%C(auto)%h%d %s %C(black)%C(bold)%cr"'
+
+" [Tags] Command to generate tags file
+let g:fzf_tags_command = 'ctags -R'
+
+" [Commands] --expect expression for directly executing the command
+let g:fzf_commands_expect = 'alt-enter,ctrl-x'
 
 "------------------------------------
 "" MiniBufExplorer
