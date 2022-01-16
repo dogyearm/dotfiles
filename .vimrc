@@ -249,8 +249,9 @@ autocmd BufWritePre * :%s/\s\+$//e  " 保存時に行末のスペースを削除
 " vnoremap ' "zdi'<C-R>z'<ESC>
 
 " ウィンドウ分割を楽にする設定
+" 薬指弱いのでsは心配や
 nnoremap <silent> s- :<C-u>sp<CR>
-nnoremap <silent> s| :<C-u>vs<CR>
+nnoremap <silent> s<Bar> :<C-u>vs<CR>
 nnoremap <silent> sq :<C-u>q<CR>
 nnoremap <silent> sQ :<C-u>bd<CR>
 nnoremap <silent> sj <C-w>j
@@ -261,15 +262,13 @@ nnoremap <silent> sJ <C-w>J
 nnoremap <silent> sK <C-w>K
 nnoremap <silent> sL <C-w>L
 nnoremap <silent> sH <C-w>H
-nnoremap <silent> s><C-w>>
-nnoremap <silent> s<<C-w><
-nnoremap <silent> s+<C-w>+
-"nnoremap <silent> s-<C-w>-
+nnoremap <silent> <C-h> <C-w><
+nnoremap <silent> <C-l> <C-w>>
 nnoremap <silent> <C-j> <C-w>+
-" nnoremap <silent> <S-j> <C-w>-
+nnoremap <silent> <C-k> <C-w>-
 
-" nnoremap <silent> <S-h> :bprev <CR>
-" nnoremap <silent> <S-l> :bnext <CR>
+nnoremap <silent> <S-h> :bprev <CR>
+nnoremap <silent> <S-l> :bnext <CR>
 
 
 
