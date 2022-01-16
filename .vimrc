@@ -33,8 +33,6 @@ Plug 'nanotech/jellybeans.vim'
 
 " etc
 Plug 'airblade/vim-gitgutter'
-" Plug 'neoclide/coc.nvim' " vimがIDEになってしまうプラグイン。
-" Plug 'junegunn/vim-easy-align'
 
 call plug#end()
 
@@ -85,18 +83,23 @@ let g:fzf_tags_command = 'ctags -R'
 " [Commands] --expect expression for directly executing the command
 let g:fzf_commands_expect = 'alt-enter,ctrl-x'
 
+let g:fzf_action = {
+  \ 'ctrl-o': 'tab split',
+  \ 'ctrl-s': 'split',
+  \ 'ctrl-v': 'vsplit' }
+
 "------------------------------------
 "" MiniBufExplorer
 "------------------------------------
 ""set minibfexp
-let g:miniBufExplMapWindowNavVim=1 "hjklで移動
-let g:miniBufExplMapWindowNavArrows=1
-let g:miniBufExplMapCTabSwitchBufs=1
-let g:miniBufExplModSelTarget=1
-let g:miniBufExplSplitToEdge=1
-let g:dumbbuf_hotkey='b,'
-nnoremap <silent> <S-h> :bprev <CR>
-nnoremap <silent> <S-l> :bnext <CR>
+" let g:miniBufExplMapWindowNavVim=1 "hjklで移動
+" let g:miniBufExplMapWindowNavArrows=1
+" let g:miniBufExplMapCTabSwitchBufs=1
+" let g:miniBufExplModSelTarget=1
+" let g:miniBufExplSplitToEdge=1
+" let g:dumbbuf_hotkey='b,'
+" nnoremap <silent> <S-h> :bprev <CR>
+" nnoremap <silent> <S-l> :bnext <CR>
 
 "-------------------------------------------------------------------------------
 " 基本設定 Basics
