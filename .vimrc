@@ -160,7 +160,8 @@ set notitle                      " vimを使ってくれてありがとう
 set ttimeoutlen=10               " キーコードシーケンスが終了するのを待つ時間を短くする
 
 nnoremap <silent> ,, :call<SID>editRc()<CR>
-nnoremap <silent> .. :call<SID>loadRc()<CR>
+nnoremap <silent> .. :source $MYVIMRC<CR>
+
 nnoremap ; :
 set clipboard+=unnamed
 
@@ -170,12 +171,6 @@ function! s:editRc()
   execute ":e ~/.tmux.conf"
   execute ":e ~/memo/dist/".strftime('%Y%m%d').".md"
   execute ":cd ~/memo"
-endfunction
-
-function! s:loadRc()
-  execute ":source ".$MYVIMRC
-  execute ":source ~/.zshrc"
-  " execute ":source ~/.tmux.conf"
 endfunction
 
 "-------------------------------------------------------------------------------
