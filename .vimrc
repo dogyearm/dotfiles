@@ -248,6 +248,36 @@ autocmd BufWritePre * :%s/\s\+$//e  " 保存時に行末のスペースを削除
 " vnoremap " "zdi^V"<C-R>z^V"<ESC>
 " vnoremap ' "zdi'<C-R>z'<ESC>
 
+" ウィンドウ分割を楽にする設定
+nnoremap <silent> s- :<C-u>sp<CR>
+nnoremap <silent> s| :<C-u>vs<CR>
+nnoremap <silent> sq :<C-u>q<CR>
+nnoremap <silent> sQ :<C-u>bd<CR>
+nnoremap <silent> sj <C-w>j
+nnoremap <silent> sk <C-w>k
+nnoremap <silent> sl <C-w>l
+nnoremap <silent> sh <C-w>h
+nnoremap <silent> sJ <C-w>J
+nnoremap <silent> sK <C-w>K
+nnoremap <silent> sL <C-w>L
+nnoremap <silent> sH <C-w>H
+nnoremap <silent> s><C-w>>
+nnoremap <silent> s<<C-w><
+nnoremap <silent> s+<C-w>+
+"nnoremap <silent> s-<C-w>-
+nnoremap <silent> <C-j> <C-w>+
+" nnoremap <silent> <S-j> <C-w>-
+
+" nnoremap <silent> <S-h> :bprev <CR>
+" nnoremap <silent> <S-l> :bnext <CR>
+
+
+
+"タブ操作
+nnoremap <silent> st :<C-u>tabnew<CR>
+nnoremap <silent> sn gt
+nnoremap <silent> sp gT
+
 "------------------------------------
 "" vimrc.local
 "------------------------------------
