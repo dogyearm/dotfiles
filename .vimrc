@@ -25,7 +25,6 @@ Plug 'tomlion/vim-solidity'
 Plug 'posva/vim-vue'
 Plug 'leafgarland/typescript-vim'
 Plug 'godlygeek/tabular'
-Plug 'plasticboy/vim-markdown'
 
 " theme
 Plug 'altercation/vim-colors-solarized'
@@ -169,7 +168,7 @@ function! s:editRc()
   execute ":e ".$MYVIMRC
   execute ":e ~/.zshrc"
   execute ":e ~/.tmux.conf"
-  execute ":e ~/memo/".strftime('%Y%m%d').".md"
+  execute ":e ~/memo/dist/".strftime('%Y%m%d').".md"
   execute ":cd ~/memo"
 endfunction
 
@@ -223,6 +222,9 @@ autocmd FileType java  :set fileencoding=utf-8
 autocmd FileType scala :set fileencoding=utf-8
 autocmd BufNewFile,BufRead *.vue set filetype=html " vueファイルをhtmlとして認識させる
 autocmd BufNewFile,BufRead *.rules set filetype=js " firestore.rulesファイルをjsとして認識させる
+" markdownのハイライトを有効にする
+set syntax=markdown
+au BufRead,BufNewFile *.md set filetype=markdown
 
 "-------------------------------------------------------------------------------
 " インデント Indent
