@@ -31,8 +31,12 @@ Plug 'altercation/vim-colors-solarized'
 Plug 'junegunn/seoul256.vim'
 Plug 'nanotech/jellybeans.vim'
 
-" etc
+" git
+" 差分を左に表示する
 Plug 'airblade/vim-gitgutter'
+" github を開く
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-rhubarb'
 
 call plug#end()
 
