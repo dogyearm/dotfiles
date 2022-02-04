@@ -26,6 +26,10 @@ Plug 'posva/vim-vue'
 Plug 'leafgarland/typescript-vim'
 Plug 'godlygeek/tabular'
 
+" indent
+Plug 'Vimjas/vim-python-pep8-indent'
+Plug 'nathanaelkane/vim-indent-guides'
+
 " theme
 Plug 'altercation/vim-colors-solarized'
 Plug 'junegunn/seoul256.vim'
@@ -40,6 +44,9 @@ Plug 'airblade/vim-gitgutter'
 " github を開く
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-rhubarb'
+
+" ペーストのとき自動でpaste modeにする
+Plug 'ConradIrwin/vim-bracketed-paste'
 
 call plug#end()
 
