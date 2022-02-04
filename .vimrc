@@ -45,9 +45,6 @@ Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-rhubarb'
 
-" ペーストのとき自動でpaste modeにする
-Plug 'ConradIrwin/vim-bracketed-paste'
-
 call plug#end()
 
 "-------------------------------------------------------------------------------
@@ -67,23 +64,13 @@ let $EZF_DEFAULT_OPTS="--layout=reverse"
 let $FZF_DEFAULT_COMMAND="rg --files --hidden --glob '!.git/**'"
 let g:fzf_preview_window = ['right:50%', 'ctrl-/']
 
-" Preview window on the upper side of the window with 40% height,
-" hidden by default, ctrl-/ to toggle
-let g:fzf_preview_window = ['up:40%:hidden', 'ctrl-/']
-
 " Empty value to disable preview window altogether
-let g:fzf_preview_window = []
-let g:fzf_layout = {'up':'~90%', 'window': { 'width': 0.8, 'height': 0.8,'yoffset':0.5,'xoffset': 0.5, 'border': 'sharp' } }
+" let g:fzf_layout = {'up':'~90%', 'window': { 'width': 0.8, 'height': 0.8,'yoffset':0.5,'xoffset': 0.5, 'border': 'sharp' } }
+" preview window は目線の位置ぐらいがちょうど良い
+let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.3, 'relative': v:true, 'yoffset': 0 } }
 
-let mapleader = "\<Space>"
-
-" fzf
-nnoremap <silent> <leader>f :Files<CR>
-nnoremap <silent> <leader>g :GFiles<CR>
-nnoremap <silent> <leader>G :GFiles?<CR>
-nnoremap <silent> <leader>b :Buffers<CR>
-nnoremap <silent> <leader>h :History<CR>
-nnoremap <silent> <leader>r :Rg<CR>
+" let mapleader = "\<Space>"
+let mapleader = "\,"
 
 " [Buffers] Jump to the existing window if possible
 let g:fzf_buffers_jump = 1
@@ -101,6 +88,18 @@ let g:fzf_action = {
   \ 'ctrl-o': 'tab split',
   \ 'ctrl-s': 'split',
   \ 'ctrl-v': 'vsplit' }
+
+nnoremap <silent> <leader>f :Files<CR>
+nnoremap <silent> <leader>g :GFiles<CR>
+nnoremap <silent> <leader>G :GFiles?<CR>
+nnoremap <silent> <leader>b :Buffers<CR>
+nnoremap <silent> <leader>h :History<CR>
+nnoremap <silent> <leader>r :Rg<CR>
+
+" Rails keymap
+" noremap <silent> <leader>uu :Files<CR>
+inoremap <expr> <c-x><c-f> fzf#vim#complete#path('fd')
+
 
 "------------------------------------
 "" MiniBufExplorer
@@ -208,7 +207,7 @@ au BufRead,BufNewFile *.md set filetype=markdown
 " インデント Indent
 "-------------------------------------------------------------------------------
 set autoindent                    " 自動でインデント
-set paste                         " ペースト時にautoindentを無効に(onにするとautocomplpop.vimが動かない)
+"set paste                         " ペースト時にautoindentを無効に(onにするとautocomplpop.vimが動かない)
 set smartindent                   " 新しい行を開始したときに、新しい行のインデントを現在行と同じ量にする。
 set cindent                       " Cプログラムファイルの自動インデントを始める
 set tabstop=2 shiftwidth=2 softtabstop=0
