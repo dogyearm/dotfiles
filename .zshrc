@@ -10,7 +10,8 @@ autoload -Uz _zinit
 # Theme
 zinit light b4b4r07/ultimate
 
-zinit light zsh-users/zsh-autosuggestions
+# 使いづらいのでコメントアウト
+# zinit light zsh-users/zsh-autosuggestions
 zinit light zdharma-continuum/fast-syntax-highlighting # シンタックスハイライト
 zinit ice proto'git' pick'init.sh'
 zinit light b4b4r07/enhancd  # ディレクトリ検索
@@ -123,8 +124,8 @@ tm() {
 ###############
 ### zsh-users/zsh-autosuggestion
 ###############
-ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=242'
-bindkey '\t' autosuggest-accept  # Tab
+# ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=242'
+# bindkey '^t' autosuggest-accept  # Tab
 # bindkey '\hoge' autosuggest-clear
 # bindkey '\hgoe' autosuggest-execute
 
@@ -142,3 +143,8 @@ export ENHANCD_HOOK_AFTER_CD="ls"
 ###############
 [ ! -f ~/.zshrc.local ] && echo "# Local Setting" >> ~/.zshrc.local
 source ~/.zshrc.local
+
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init --path)"
+eval "$(pyenv init -)"

@@ -6,8 +6,7 @@
 let data_dir = has('nvim') ? stdpath('data') . '/site' : '~/.vim'
 if empty(glob(data_dir . '/autoload/plug.vim'))
   silent execute '!curl -fLo '.data_dir.'/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
-  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
-endif
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC endif
 
 call plug#begin()
 
@@ -30,6 +29,9 @@ Plug 'godlygeek/tabular'
 Plug 'altercation/vim-colors-solarized'
 Plug 'junegunn/seoul256.vim'
 Plug 'nanotech/jellybeans.vim'
+" status/tabline theme
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 
 " git
 " 差分を左に表示する
@@ -104,6 +106,11 @@ let g:fzf_action = {
 " let g:dumbbuf_hotkey='b,'
 " nnoremap <silent> <S-h> :bprev <CR>
 " nnoremap <silent> <S-l> :bnext <CR>
+
+"------------------------------------
+"" vim-airline
+"------------------------------------
+let g:airline#extensions#tabline#enabled = 1
 
 "-------------------------------------------------------------------------------
 " 基本設定 Basics
@@ -288,8 +295,3 @@ if ! filereadable(expand('~/.vimrc.local'))
   call writefile(['" Local setting'], $HOME."/.vimrc.local")
 endif
 source ~/.vimrc.local
-
-
-"-------------------------------------------------------------------------------
-" Method
-"-------------------------------------------------------------------------------
