@@ -6,7 +6,8 @@
 let data_dir = has('nvim') ? stdpath('data') . '/site' : '~/.vim'
 if empty(glob(data_dir . '/autoload/plug.vim'))
   silent execute '!curl -fLo '.data_dir.'/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
-  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC endif
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
 
 call plug#begin()
 
@@ -141,11 +142,11 @@ nnoremap ; :
 set clipboard+=unnamed
 
 function! s:editRc()
-  execute ":e ".$MYVIMRC
-  execute ":e ~/.zshrc"
   execute ":e ~/.tmux.conf"
-  execute ":e ~/memo/dist/".strftime('%Y%m%d').".md"
-  execute ":cd ~/memo"
+  execute ":e ~/.zshrc"
+  execute ":e ".$MYVIMRC
+  execute ":e ~/note/dist/".strftime('%Y%m').".md"
+  execute ":cd ~/note"
 endfunction
 
 "-------------------------------------------------------------------------------
