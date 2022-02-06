@@ -180,6 +180,7 @@ set display=uhex                                    " 印字不可能文字を16
 set laststatus=2                                    " 常にステータスラインを表示
 set ruler                                           " カーソルが何行目の何列目に置かれているかを表示する
 set guifont=menlo:h9                                " Font指定
+nnoremap <ESC> :noh<CR>                             " 検索時のハイライトを ESC で無効に
 
 " 全角スペースの表示
 highlight ZenkakuSpace cterm=underline ctermfg=lightblue guibg=darkgray
