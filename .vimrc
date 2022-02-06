@@ -27,8 +27,8 @@ Plug 'leafgarland/typescript-vim'
 Plug 'godlygeek/tabular'
 
 " indent
-Plug 'Vimjas/vim-python-pep8-indent'
-Plug 'nathanaelkane/vim-indent-guides'
+" Plug 'Vimjas/vim-python-pep8-indent'
+" Plug 'nathanaelkane/vim-indent-guides'
 
 " theme
 Plug 'altercation/vim-colors-solarized'
@@ -94,11 +94,25 @@ nnoremap <silent> <leader>g :GFiles<CR>
 nnoremap <silent> <leader>G :GFiles?<CR>
 nnoremap <silent> <leader>b :Buffers<CR>
 nnoremap <silent> <leader>h :History<CR>
+nnoremap <silent> <leader>c :Commits<CR>
+nnoremap <silent> <leader>l :Lines<CR>
 nnoremap <silent> <leader>r :Rg<CR>
 
 " Rails keymap
 " noremap <silent> <leader>uu :Files<CR>
 inoremap <expr> <c-x><c-f> fzf#vim#complete#path('fd')
+
+" noremap <silent> <leader>uu :<C-u>Files controllers<CR>
+
+command! -bang -nargs=? -complete=dir Files call fzf#vim#files(<q-args>, <bang>0)
+command! -bang -nargs=* GGrep
+      \ call fzf#vim#grep(
+      \   'git grep --line-number -- '.shellescape(<q-args>), 0,
+      \   fzf#vim#with_preview({'dir': systemlist('git rev-parse --show-toplevel')[0]}), <bang>0)
+command! -bang -nargs=* Rg
+  \ call fzf#vim#grep(
+  \   'rg --column --line-number --no-heading --color=always --smart-case -- '.shellescape(<q-args>), 1,
+  \   fzf#vim#with_preview(), <bang>0)
 
 
 "------------------------------------
@@ -207,9 +221,9 @@ au BufRead,BufNewFile *.md set filetype=markdown
 " インデント Indent
 "-------------------------------------------------------------------------------
 set autoindent                    " 自動でインデント
-"set paste                         " ペースト時にautoindentを無効に(onにするとautocomplpop.vimが動かない)
 set smartindent                   " 新しい行を開始したときに、新しい行のインデントを現在行と同じ量にする。
 set cindent                       " Cプログラムファイルの自動インデントを始める
+" set paste                         " ペースト時にautoindentを無効に(onにするとautocomplpop.vimが動かない)
 set tabstop=2 shiftwidth=2 softtabstop=0
 
 if has("autocmd")
