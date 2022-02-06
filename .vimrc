@@ -223,7 +223,8 @@ au BufRead,BufNewFile *.md set filetype=markdown
 set autoindent                    " 自動でインデント
 set smartindent                   " 新しい行を開始したときに、新しい行のインデントを現在行と同じ量にする。
 set cindent                       " Cプログラムファイルの自動インデントを始める
-" set paste                         " ペースト時にautoindentを無効に(onにするとautocomplpop.vimが動かない)
+set paste                         " ペースト時にautoindentを無効に(onにするとautocomplpop.vimが動かない)
+autocmd InsertLeave * set nopaste " Turn off paste mode when leaving insert
 set tabstop=2 shiftwidth=2 softtabstop=0
 
 if has("autocmd")
