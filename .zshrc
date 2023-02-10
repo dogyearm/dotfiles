@@ -1,11 +1,12 @@
 umask 022
-bindkey -d
+bindkey -e
 PROMPT='%n$ '
 
 alias gst='git status --short --branch'
 alias vimf='vim $(fzf)'
 alias ll='ls -la'
 alias tm='tmux'
+alias so='source ~/.zshrc'
 
 cd ~/src/github.com/dogyearm
 
@@ -18,4 +19,4 @@ setopt list_packed
 setopt auto_cd                       # cd dir name
 setopt correct                       # spellcheck
 
-zstyle ':completion:*:default' menu select=1 # color
+zstyle ':completion:*:default' menu select=2 # highlight autocomplete
