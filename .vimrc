@@ -1,141 +1,3 @@
-"-------------------------------------------------------------------------------
-" vim-plug
-"-------------------------------------------------------------------------------
-" Install
-" https://github.com/junegunn/vim-plug/wiki/tips#automatic-installation
-let data_dir = has('nvim') ? stdpath('data') . '/site' : '~/.vim'
-if empty(glob(data_dir . '/autoload/plug.vim'))
-  silent execute '!curl -fLo '.data_dir.'/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
-  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
-endif
-
-call plug#begin()
-
-" general
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-Plug 'junegunn/fzf.vim'
-Plug 'yuki-ycino/fzf-preview.vim', { 'branch': 'release/rpc' }
-
-" highlight
-Plug 'vim-ruby/vim-ruby'
-Plug 'fatih/vim-go'
-Plug 'pangloss/vim-javascript'
-Plug 'kchmck/vim-coffee-script'
-Plug 'tomlion/vim-solidity'
-Plug 'posva/vim-vue'
-Plug 'leafgarland/typescript-vim'
-Plug 'godlygeek/tabular'
-
-" indent
-" Plug 'Vimjas/vim-python-pep8-indent'
-" Plug 'nathanaelkane/vim-indent-guides'
-
-" theme
-Plug 'altercation/vim-colors-solarized'
-Plug 'junegunn/seoul256.vim'
-Plug 'nanotech/jellybeans.vim'
-" status/tabline theme
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
-
-" git
-" 差分を左に表示する
-Plug 'airblade/vim-gitgutter'
-" github を開く
-Plug 'tpope/vim-fugitive'
-Plug 'tpope/vim-rhubarb'
-
-call plug#end()
-
-"-------------------------------------------------------------------------------
-" solarized.vim
-"-------------------------------------------------------------------------------
-set background=dark
-syntax enable
-colorscheme solarized
-
-"-------------------------------------------------------------------------------
-" fzf.vim
-"-------------------------------------------------------------------------------
-" If installed using git
-set rtp+=~/.fzf
-
-let $EZF_DEFAULT_OPTS="--layout=reverse"
-let $FZF_DEFAULT_COMMAND="rg --files --hidden --glob '!.git/**'"
-let g:fzf_preview_window = ['right:50%', 'ctrl-/']
-
-" Empty value to disable preview window altogether
-" let g:fzf_layout = {'up':'~90%', 'window': { 'width': 0.8, 'height': 0.8,'yoffset':0.5,'xoffset': 0.5, 'border': 'sharp' } }
-" preview window は目線の位置ぐらいがちょうど良い
-let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.3, 'relative': v:true, 'yoffset': 0 } }
-
-" let mapleader = "\<Space>"
-let mapleader = "\,"
-
-" [Buffers] Jump to the existing window if possible
-let g:fzf_buffers_jump = 1
-
-" [[B]Commits] Customize the options used by 'git log':
-let g:fzf_commits_log_options = '--graph --color=always --format="%C(auto)%h%d %s %C(black)%C(bold)%cr"'
-
-" [Tags] Command to generate tags file
-let g:fzf_tags_command = 'ctags -R'
-
-" [Commands] --expect expression for directly executing the command
-let g:fzf_commands_expect = 'alt-enter,ctrl-x'
-
-let g:fzf_action = {
-  \ 'ctrl-o': 'tab split',
-  \ 'ctrl-s': 'split',
-  \ 'ctrl-v': 'vsplit' }
-
-nnoremap <silent> <leader>f :Files<CR>
-nnoremap <silent> <leader>g :GFiles<CR>
-nnoremap <silent> <leader>G :GFiles?<CR>
-nnoremap <silent> <leader>b :Buffers<CR>
-nnoremap <silent> <leader>h :History<CR>
-nnoremap <silent> <leader>c :Commits<CR>
-nnoremap <silent> <leader>l :Lines<CR>
-nnoremap <silent> <leader>r :Rg<CR>
-
-" Rails keymap
-" noremap <silent> <leader>uu :Files<CR>
-inoremap <expr> <c-x><c-f> fzf#vim#complete#path('fd')
-
-" noremap <silent> <leader>uu :<C-u>Files controllers<CR>
-
-command! -bang -nargs=? -complete=dir Files call fzf#vim#files(<q-args>, <bang>0)
-command! -bang -nargs=* GGrep
-      \ call fzf#vim#grep(
-      \   'git grep --line-number -- '.shellescape(<q-args>), 0,
-      \   fzf#vim#with_preview({'dir': systemlist('git rev-parse --show-toplevel')[0]}), <bang>0)
-command! -bang -nargs=* Rg
-  \ call fzf#vim#grep(
-  \   'rg --column --line-number --no-heading --color=always --smart-case -- '.shellescape(<q-args>), 1,
-  \   fzf#vim#with_preview(), <bang>0)
-
-
-"------------------------------------
-"" MiniBufExplorer
-"------------------------------------
-""set minibfexp
-" let g:miniBufExplMapWindowNavVim=1 "hjklで移動
-" let g:miniBufExplMapWindowNavArrows=1
-" let g:miniBufExplMapCTabSwitchBufs=1
-" let g:miniBufExplModSelTarget=1
-" let g:miniBufExplSplitToEdge=1
-" let g:dumbbuf_hotkey='b,'
-" nnoremap <silent> <S-h> :bprev <CR>
-" nnoremap <silent> <S-l> :bnext <CR>
-
-"------------------------------------
-"" vim-airline
-"------------------------------------
-let g:airline#extensions#tabline#enabled = 1
-
-"-------------------------------------------------------------------------------
-" 基本設定 Basics
-"-------------------------------------------------------------------------------
 let mapleader = ","              " キーマップリーダー
 set scrolloff=5                  " スクロール時の余白確保
 set textwidth=0                  " 一行に長い文章を書いていても自動折り返しをしない
@@ -154,24 +16,10 @@ set viminfo='50,<1000,s100,\"50  " viminfoファイルの設定
 set modelines=0                  " モードラインは無効
 set notitle                      " vimを使ってくれてありがとう
 set ttimeoutlen=10               " キーコードシーケンスが終了するのを待つ時間を短くする
-
-nnoremap <silent> ,, :call<SID>editRc()<CR>
+nnoremap <silent> ,, :edit $MYVIMRC<CR>
 nnoremap <silent> .. :source $MYVIMRC<CR>
-
 nnoremap ; :
 set clipboard+=unnamed
-
-function! s:editRc()
-  execute ":e ~/.tmux.conf"
-  execute ":e ~/.zshrc"
-  execute ":e ".$MYVIMRC
-  execute ":e ~/note/dist/".strftime('%Y%m').".md"
-  execute ":cd ~/note"
-endfunction
-
-"-------------------------------------------------------------------------------
-" 表示 Apperance
-"-------------------------------------------------------------------------------
 set showmatch                                       " 括弧の対応をハイライト
 set number                                          " 行番号表示
 set list                                            " 不可視文字表示
@@ -181,28 +29,17 @@ set laststatus=2                                    " 常にステータスラ�
 set ruler                                           " カーソルが何行目の何列目に置かれているかを表示する
 set guifont=menlo:h9                                " Font指定
 nnoremap <ESC> :noh<CR>                             " 検索時のハイライトを ESC で無効に
-
-" 全角スペースの表示
 highlight ZenkakuSpace cterm=underline ctermfg=lightblue guibg=darkgray
 match ZenkakuSpace /　/
-
-" カーソルの形状
 if has('vim_starting')
-  " 挿入モード時に非点滅の縦棒タイプのカーソル
-  let &t_SI .= "\e[6 q"
-  " ノーマルモード時に非点滅のブロックタイプのカーソル
-  let &t_EI .= "\e[2 q"
-  " 置換モード時に非点滅の下線タイプのカーソル
-  let &t_SR .= "\e[4 q"
+  let &t_SI .= "\e[6 q" " 挿入モード時に非点滅の縦棒タイプのカーソル
+  let &t_EI .= "\e[2 q" " ノーマルモード時に非点滅のブロックタイプのカーソル
+  let &t_SR .= "\e[4 q" " 置換モード時に非点滅の下線タイプのカーソル
 endif
 
-"-------------------------------------------------------------------------------
-" エンコーディング関連 Encoding
-"-------------------------------------------------------------------------------
+" Encoding
 set ffs=unix,dos,mac              " 改行文字
 set encoding=utf-8                " デフォルトエンコーディング
-
-" 文字コード認識はへ
 autocmd FileType cvs   :set fileencoding=euc-jp
 autocmd FileType svn   :set fileencoding=utf-8
 autocmd FileType js    :set fileencoding=utf-8
@@ -214,13 +51,10 @@ autocmd FileType java  :set fileencoding=utf-8
 autocmd FileType scala :set fileencoding=utf-8
 autocmd BufNewFile,BufRead *.vue set filetype=html " vueファイルをhtmlとして認識させる
 autocmd BufNewFile,BufRead *.rules set filetype=js " firestore.rulesファイルをjsとして認識させる
-" markdownのハイライトを有効にする
 set syntax=markdown
 au BufRead,BufNewFile *.md set filetype=markdown
 
-"-------------------------------------------------------------------------------
-" インデント Indent
-"-------------------------------------------------------------------------------
+" Indent
 set autoindent                    " 自動でインデント
 set smartindent                   " 新しい行を開始したときに、新しい行のインデントを現在行と同じ量にする。
 set cindent                       " Cプログラムファイルの自動インデントを始める
@@ -262,59 +96,54 @@ if has("autocmd")
   autocmd FileType go         setlocal noexpandtab list tabstop=2 shiftwidth=2
 endif
 
-"-------------------------------------------------------------------------------
-" 編集関連 Edit
-"-------------------------------------------------------------------------------
+" Edit ---------------------------------------------------------
 set expandtab                       " Tabキーを空白に変換
 set hlsearch                        " 検索語句のハイライ
 autocmd BufWritePre * :%s/\t/  /ge  " 保存時にtabをスペースに変換する
 autocmd BufWritePre * :%s/\s\+$//e  " 保存時に行末のスペースを削除する
-
-" 括弧を自動補完
-" inoremap { {}<LEFT>
-" inoremap [ []<LEFT>
-" inoremap ( ()<LEFT>
-" inoremap " ""<LEFT>
-" inoremap ' ''<LEFT>
-" vnoremap { "zdi^V{<C-R>z}<ESC>
-" vnoremap [ "zdi^V[<C-R>z]<ESC>
-" vnoremap ( "zdi^V(<C-R>z)<ESC>
-" vnoremap " "zdi^V"<C-R>z^V"<ESC>
-" vnoremap ' "zdi'<C-R>z'<ESC>
-
-" ウィンドウ分割を楽にする設定
-" 薬指弱いのでsは心配や
-nnoremap <silent> s- :<C-u>sp<CR>
-nnoremap <silent> s<Bar> :<C-u>vs<CR>
-nnoremap <silent> sq :<C-u>q<CR>
-nnoremap <silent> sQ :<C-u>bd<CR>
-nnoremap <silent> sj <C-w>j
-nnoremap <silent> sk <C-w>k
-nnoremap <silent> sl <C-w>l
-nnoremap <silent> sh <C-w>h
-nnoremap <silent> sJ <C-w>J
-nnoremap <silent> sK <C-w>K
-nnoremap <silent> sL <C-w>L
-nnoremap <silent> sH <C-w>H
-nnoremap <silent> <C-h> <C-w><
-nnoremap <silent> <C-l> <C-w>>
-nnoremap <silent> <C-j> <C-w>+
-nnoremap <silent> <C-k> <C-w>-
-
 nnoremap <silent> <S-h> :bprev <CR>
 nnoremap <silent> <S-l> :bnext <CR>
 
+" vim-plug
+call plug#begin()
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
+Plug 'yuki-ycino/fzf-preview.vim', { 'branch': 'release/rpc' }
+Plug 'altercation/vim-colors-solarized'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'airblade/vim-gitgutter'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-rhubarb'
+call plug#end()
 
+set background=dark
+syntax enable
+colorscheme solarized
 
-"タブ操作
-nnoremap <silent> st :<C-u>tabnew<CR>
-nnoremap <silent> sn gt
-nnoremap <silent> sp gT
+nnoremap <silent> <leader>f :Files<CR>
+nnoremap <silent> <leader>g :GFiles<CR>
+nnoremap <silent> <leader>G :GFiles?<CR>
+nnoremap <silent> <leader>b :Buffers<CR>
+nnoremap <silent> <leader>h :History<CR>
+nnoremap <silent> <leader>c :Commits<CR>
+nnoremap <silent> <leader>l :Lines<CR>
+nnoremap <silent> <leader>r :Rg<CR>
 
-"------------------------------------
-"" vimrc.local
-"------------------------------------
-if ! filereadable(expand('~/.vimrc.local'))
-  call writefile(['" Local setting'], $HOME."/.vimrc.local")
-endif
-source ~/.vimrc.local
+" Rails keymap
+" noremap <silent> <leader>uu :Files<CR>
+inoremap <expr> <c-x><c-f> fzf#vim#complete#path('fd')
+
+" noremap <silent> <leader>uu :<C-u>Files controllers<CR>
+
+command! -bang -nargs=? -complete=dir Files call fzf#vim#files(<q-args>, <bang>0)
+command! -bang -nargs=* GGrep
+      \ call fzf#vim#grep(
+      \   'git grep --line-number -- '.shellescape(<q-args>), 0,
+      \   fzf#vim#with_preview({'dir': systemlist('git rev-parse --show-toplevel')[0]}), <bang>0)
+command! -bang -nargs=* Rg
+  \ call fzf#vim#grep(
+  \   'rg --column --line-number --no-heading --color=always --smart-case -- '.shellescape(<q-args>), 1,
+  \   fzf#vim#with_preview(), <bang>0)
+
+let g:airline#extensions#tabline#enabled = 1
