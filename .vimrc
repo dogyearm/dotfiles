@@ -1,4 +1,7 @@
 let mapleader = ","                                 " キーマップリーダー
+let &t_SI .= "\e[6 q"                               " 挿入モード時に非点滅の縦棒タイプのカーソル
+let &t_EI .= "\e[2 q"                               " ノーマルモード時に非点滅のブロックタイプのカーソル
+let &t_SR .= "\e[4 q"                               " 置換モード時に非点滅の下線タイプのカーソル
 set scrolloff=5                                     " スクロール時の余白確保
 set textwidth=0                                     " 一行に長い文章を書いていても自動折り返しをしない
 set nobackup                                        " バックアップ取らない
@@ -24,29 +27,27 @@ set listchars=tab:>.,trail:_,extends:>,precedes:<   " 不可視文字の表示�
 set display=uhex                                    " 印字不可能文字を16進数で表示
 set laststatus=2                                    " 常にステータスラインを表示
 set ruler                                           " カーソルが何行目の何列目に置かれているかを表示する
-set guifont=menlo:h9                                " Font指定
-nnoremap <ESC> :noh<CR>                             " 検索時のハイライトを ESC で無効に
-nnoremap <silent> ,, :edit $MYVIMRC<CR>
-nnoremap <silent> .. :source $MYVIMRC<CR>
-nnoremap ; :
-highlight ZenkakuSpace cterm=underline ctermfg=lightblue guibg=darkgray
-match ZenkakuSpace /　/
+set guifont=menlo:h12                               " Font指定
 set expandtab                                       " Tabキーを空白に変換
 set hlsearch                                        " 検索語句のハイライ
 autocmd BufWritePre * :%s/\t/  /ge                  " 保存時にtabをスペースに変換する
 autocmd BufWritePre * :%s/\s\+$//e                  " 保存時に行末のスペースを削除する
+nnoremap <ESC> :noh<CR>                             " 検索時のハイライトを ESC で無効に
+nnoremap ; :
+nnoremap <silent> ,, :edit $MYVIMRC<CR>
+nnoremap <silent> .. :source $MYVIMRC<CR>
 nnoremap <silent> <S-h> :bprev <CR>
 nnoremap <silent> <S-l> :bnext <CR>
+nnoremap <silent> <S-j> :bprev <CR>
+nnoremap <silent> <S-k> :bnext <CR>
+nnoremap <silent> <C-h> :bprev <CR>
+nnoremap <silent> <C-l> :bnext <CR>
+nnoremap <silent> <C-j> :bprev <CR>
+nnoremap <silent> <C-k> :bnext <CR>
 
-if has('vim_starting')
-  let &t_SI .= "\e[6 q"                             " 挿入モード時に非点滅の縦棒タイプのカーソル
-  let &t_EI .= "\e[2 q"                             " ノーマルモード時に非点滅のブロックタイプのカーソル
-  let &t_SR .= "\e[4 q"                             " 置換モード時に非点滅の下線タイプのカーソル
-endif
-
-" Encoding ----------------------------------------------------------------------
-set ffs=unix,dos,mac                                " 改行文字
-set encoding=utf-8                                  " デフォルトエンコーディング
+" Encoding
+set ffs=unix,dos,mac
+set encoding=utf-8
 autocmd FileType cvs   :set fileencoding=euc-jp
 autocmd FileType svn   :set fileencoding=utf-8
 autocmd FileType js    :set fileencoding=utf-8
@@ -56,12 +57,11 @@ autocmd FileType xml   :set fileencoding=utf-8
 autocmd FileType xml   :set fileencoding=shift-jis
 autocmd FileType java  :set fileencoding=utf-8
 autocmd FileType scala :set fileencoding=utf-8
-autocmd BufNewFile,BufRead *.vue set filetype=html  " vueファイルをhtmlとして認識させる
-autocmd BufNewFile,BufRead *.rules set filetype=js  " firestore.rulesファイルをjsとして認識させる
-set syntax=markdown
-au BufRead,BufNewFile *.md set filetype=markdown
+autocmd BufNewFile,BufRead *.vue set filetype=html
+autocmd BufNewFile,BufRead *.rules set filetype=js
+autocmd BufNewFile,BufRead *.md set filetype=markdown
 
-" Indent ----------------------------------------------------------------------
+" Indent
 set autoindent                                      " 自動でインデント
 set smartindent                                     " 新しい行を開始したときに、新しい行のインデントを現在行と同じ量にする。
 set cindent                                         " Cプログラムファイルの自動インデントを始める
@@ -103,24 +103,25 @@ if has("autocmd")
   autocmd FileType go         setlocal noexpandtab list tabstop=2 shiftwidth=2
 endif
 
-" Vim Plug ----------------------------------------------------------------------
+" Vim Plug
 call plug#begin()
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-Plug 'junegunn/fzf.vim'
-Plug 'yuki-ycino/fzf-preview.vim', { 'branch': 'release/rpc' }
-Plug 'altercation/vim-colors-solarized'
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
+Plug 'altercation/vim-colors-solarized'             " Solarized
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } } " Fuzzy Finder
+Plug 'junegunn/fzf.vim'                             " Fzf Vim Plugin
+Plug 'vim-airline/vim-airline'                      " ritch status bar
+Plug 'vim-airline/vim-airline-themes'               " status bar theme
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-rhubarb'
 call plug#end()
 
-set background=dark
-syntax enable
 colorscheme solarized
 let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#formatter = 'unique_tail'
+let g:airline#extensions#tabline#buffer_idx_mode = 1
+let g:airline_theme = 'solarized'
 
+" fzf
 nnoremap <silent> <leader>f :Files<CR>
 nnoremap <silent> <leader>g :GFiles<CR>
 nnoremap <silent> <leader>G :GFiles?<CR>
@@ -130,4 +131,25 @@ nnoremap <silent> <leader>c :Commits<CR>
 nnoremap <silent> <leader>l :Lines<CR>
 nnoremap <silent> <leader>r :Rg<CR>
 
+command! -bang ProjectRoot call fzf#vim#files('~/', <bang>0)
+
 " Rails keymap
+nnoremap <silent> <leader>urc :Files app/controllers/<CR>
+nnoremap <silent> <leader>urm :Files app/models/<CR>
+nnoremap <silent> <leader>urma :Files app/mailers/<CR>
+nnoremap <silent> <leader>urd :Files db/<CR>
+nnoremap <silent> <leader>urv :Files app/views/<CR>
+nnoremap <silent> <leader>urs :Files app/stylesheets/<CR>
+nnoremap <silent> <leader>urj :Files app/javascripts/<CR>
+nnoremap <silent> <leader>uro :Files config/<CR>
+nnoremap <silent> <leader>url :Files lib/<CR>
+nnoremap <silent> <leader>urr :Files spec/<CR>
+nnoremap <silent> <leader>urt :Files app/tasks/<CR>
+nnoremap <silent> <leader>ura :Files app/apis/<CR>
+nnoremap <silent> <leader>uru :Files app/utils/<CR>
+nnoremap <silent> <leader>urse :Files app/services/<CR>
+nnoremap <silent> <leader>urre :Files app/repositories/<CR>
+
+" Fugitive
+nnoremap <silent> <leader>oo :GBrowse<CR>
+nnoremap <silent> <leader>oom :GBrowse master:%<CR>
