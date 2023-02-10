@@ -116,6 +116,8 @@ Plug 'tpope/vim-rhubarb'
 call plug#end()
 
 colorscheme solarized
+set background=dark
+
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#formatter = 'unique_tail'
 let g:airline#extensions#tabline#buffer_idx_mode = 1
@@ -131,7 +133,24 @@ nnoremap <silent> <leader>c :Commits<CR>
 nnoremap <silent> <leader>l :Lines<CR>
 nnoremap <silent> <leader>r :Rg<CR>
 
-command! -bang ProjectRoot call fzf#vim#files('~/', <bang>0)
+command! -bang ProjectRoot call fzf#vim#files('~/src', <bang>0)
+let $FZF_DEFAULT_OPTS="--layout=reverse --info=inline"
+let g:fzf_layout = { 'up': '30%' }
+let g:fzf_preview_window = []
+let g:fzf_colors = {
+  \ 'fg':      ['fg', 'Normal'],
+  \ 'bg':      ['bg', 'Normal'],
+  \ 'hl':      ['fg', 'Label'],
+  \ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
+  \ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
+  \ 'hl+':     ['fg', 'Label'],
+  \ 'info':    ['fg', 'Comment'],
+  \ 'border':  ['fg', 'Ignore'],
+  \ 'prompt':  ['fg', 'Function'],
+  \ 'pointer': ['fg', 'Statement'],
+  \ 'marker':  ['fg', 'Conditional'],
+  \ 'spinner': ['fg', 'Label'],
+  \ 'header':  ['fg', 'Comment'] }
 
 " Rails keymap
 nnoremap <silent> <leader>urc :Files app/controllers/<CR>
