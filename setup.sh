@@ -45,7 +45,9 @@ then
 fi
 
 # Symlink
-ln -snfv "$HOME"/dotfiles/.zshrc "$HOME"/.zshrc
-ln -snfv "$HOME"/dotfiles/.vimrc "$HOME"/.vimrc
-ln -snfv "$HOME"/dotfiles/.tmux.conf "$HOME"/.tmux.conf
-ln -snfv "$HOME"/dotfiles/.gitconfig "$HOME"/.gitconfig
+ln -snfv "$HOME"/src/github.com/dogyearm/dotfiles/.zshrc "$HOME"/.zshrc
+ln -snfv "$HOME"/src/github.com/dogyearm/dotfiles/.zshenv "$HOME"/.zshenv
+ln -snfv "$HOME"/src/github.com/dogyear/dotfiles/.vimrc "$HOME"/.vimrc
+ln -snfv "$HOME"/src/github.com/dogyear/dotfiles/.tmux.conf "$HOME"/.tmux.conf
+ln -snfv "$HOME"/src/github.com/dogyear/dotfiles/.gitconfig "$HOME"/.gitconfig
+ln -snfv "$HOME"/src/github.com/dogyear/dotfiles/.gitignore "$HOME"/.gitignore
