@@ -124,7 +124,7 @@ let g:airline#extensions#tabline#buffer_idx_mode = 1
 let g:airline_theme = 'solarized'
 
 " fzf
-nnoremap <silent> <leader>f :Files<CR>
+nnoremap <silent> <leader>f :ProjectRoot<CR>
 nnoremap <silent> <leader>g :GFiles<CR>
 nnoremap <silent> <leader>G :GFiles?<CR>
 nnoremap <silent> <leader>b :Buffers<CR>
@@ -133,7 +133,7 @@ nnoremap <silent> <leader>c :Commits<CR>
 nnoremap <silent> <leader>l :Lines<CR>
 nnoremap <silent> <leader>r :Rg<CR>
 
-command! -bang ProjectRoot call fzf#vim#files('~/src', <bang>0)
+command! -bang ProjectRoot call fzf#vim#files('~/src/github.com/dogyearm', <bang>0)
 let $FZF_DEFAULT_OPTS="--layout=reverse --info=inline"
 let g:fzf_layout = { 'up': '30%' }
 let g:fzf_preview_window = []
@@ -158,3 +158,6 @@ nnoremap <silent> <leader>urre :Files app/repositories/<CR>
 " Fugitive
 nnoremap <silent> <leader>oo :GBrowse<CR>
 nnoremap <silent> <leader>oom :GBrowse master:%<CR>
+
+" etc
+cd ~/src/github.com
