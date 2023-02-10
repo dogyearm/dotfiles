@@ -3,7 +3,9 @@ bindkey -e
 PROMPT='%n$ '
 
 alias gst='git status --short --branch'
+alias ga='git add'
 alias gd='git diff'
+alias gsh'git push'
 alias vimf='vim $(fzf)'
 alias ls='ls -G -w'
 alias tm='tmux'
