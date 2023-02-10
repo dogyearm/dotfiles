@@ -135,7 +135,7 @@ nnoremap <silent> <leader>r :Rg<CR>
 
 command! -bang ProjectRoot call fzf#vim#files('~/src/github.com/dogyearm', <bang>0)
 let $FZF_DEFAULT_OPTS="--layout=reverse --info=inline"
-let $FZF_DEFAULT_COMMAND='find .'
+let $FZF_DEFAULT_COMMAND='ag --hidden --ignore .git -g ""'
 let g:fzf_layout = { 'up': '30%' }
 let g:fzf_preview_window = []
 
