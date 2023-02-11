@@ -1,7 +1,7 @@
 umask 022
 bindkey -e
-PROMPT='%n$ '
-RPROMPT="%T"
+PROMPT='%F{47}❯❯❯%f '
+RPROMPT="%*"
 
 alias g='git'
 alias gst='git status --short --branch'
