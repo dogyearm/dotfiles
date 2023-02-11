@@ -2,16 +2,16 @@ umask 022
 bindkey -e
 PROMPT='%n$ '
 
+alias g='git'
 alias gst='git status --short --branch'
 alias ga='git add'
 alias gd='git diff'
 alias gsh='git push'
 alias gco='git checkout'
 alias gco='git checkout'
-alias g='git'
-alias vimf='vim $(fzf)'
 alias ls='ls -Gw'
 alias tm='tmux'
+alias vimf='vim $(fzf)'
 alias so='source ~/.zshrc'
 alias pd='pwd'
 
