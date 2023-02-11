@@ -43,11 +43,3 @@ if ! [ -x /usr/local/bin/rg ] >/dev/null 2>&1
 then
   brew install ripgrep
 fi
-
-# Symlink
-ln -snfv "$HOME"/src/github.com/dogyearm/dotfiles/.zshrc "$HOME"/.zshrc
-ln -snfv "$HOME"/src/github.com/dogyearm/dotfiles/.zshenv "$HOME"/.zshenv
-ln -snfv "$HOME"/src/github.com/dogyear/dotfiles/.vimrc "$HOME"/.vimrc
-ln -snfv "$HOME"/src/github.com/dogyear/dotfiles/.tmux.conf "$HOME"/.tmux.conf
-ln -snfv "$HOME"/src/github.com/dogyear/dotfiles/.gitconfig "$HOME"/.gitconfig
-ln -snfv "$HOME"/src/github.com/dogyear/dotfiles/.gitignore "$HOME"/.gitignore
