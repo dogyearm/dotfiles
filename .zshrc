@@ -11,6 +11,7 @@ alias vimf='vim $(fzf)'
 alias ls='ls -G -w'
 alias tm='tmux'
 alias so='source ~/.zshrc'
+alias pd='pwd'
 
 setopt prompt_subst                  # use color
 setopt nobeep                        # no beep
