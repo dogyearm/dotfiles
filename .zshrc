@@ -10,8 +10,8 @@ alias gd='git diff'
 alias gsh='git push'
 alias gco='git checkout'
 alias gco='git checkout'
-alias ls='ls -G'
-alias ll='ls -alF'
+alias ls='ls -GF --color'
+alias ll='ls -alF  --color'
 alias vimf='vim $(fzf)'
 alias tm='tmux'
 alias so='source ~/.zshrc'
@@ -63,6 +63,10 @@ cd ~/src/github.com/dogyearm/dotfiles
 
 # alias設定(zsh固有)
 if [ -f ~/.zsh/.alias ]; then
+    source ~/.zsh/.alias
+fi
+
+if [ -f ~/.zsh/.alias.zsh ]; then
     source ~/.zsh/.alias
 fi
 
