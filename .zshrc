@@ -20,7 +20,6 @@ autoload colors && colors            # enable color for prompt
 setopt auto_pushd                    # cd -
 setopt auto_list
 setopt list_packed
-setopt auto_cd                       # auto cd
 setopt correct                       # spellcheck
 setopt interactive_comments          # comment
 setopt auto_cd; function chpwd() { ls } # cd & ls
@@ -43,6 +42,8 @@ cdpath=(
   $HOME/src/github.com/dogyearm(N-/)
   $cdpath
 )
+
+cd ~/src/github.com/dogyearm/dotfiles
 
 # fd - cd to selected directory
 fd() {
@@ -88,6 +89,11 @@ if [[ ! -n $TMUX ]]; then
   if [[ -z "$ID" ]]; then
     tmux new-session
   fi
+  create_new_session="Create New Session"
+  ID="$ID\n${create_new_session}:"
   ID="`echo $ID | $PERCOL | cut -d: -f1`"
+  if [[ "$ID" = "${create_new_session}" ]]; then
+    tmux new-session
+  fi
   tmux attach-session -t "$ID"
 fi
