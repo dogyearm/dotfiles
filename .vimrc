@@ -32,7 +32,7 @@ set expandtab                                       " Tabキーを空白に変�
 set hlsearch                                        " 検索語句のハイライ
 autocmd BufWritePre * :%s/\t/  /ge                  " 保存時にtabをスペースに変換する
 autocmd BufWritePre * :%s/\s\+$//e                  " 保存時に行末のスペースを削除する
-nnoremap <ESC> :noh<CR>                             " 検索時のハイライトを ESC で無効に
+nnoremap <ESC><ESC> :nohl<CR>                       " 検索時のハイライトを ESC で無効に
 nnoremap ; :
 nnoremap <silent> ,, :edit $MYVIMRC<CR>
 nnoremap <silent> .. :source $MYVIMRC<CR>
@@ -159,6 +159,3 @@ nnoremap <silent> <leader>urre :Files app/repositories/<CR>
 " Fugitive
 nnoremap <silent> <leader>oo :GBrowse<CR>
 nnoremap <silent> <leader>oom :GBrowse master:%<CR>
-
-" etc
-cd ~/src/github.com
