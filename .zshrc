@@ -1,6 +1,7 @@
 umask 022
 bindkey -e
 PROMPT='%n$ '
+RPROMPT="%T"
 
 alias g='git'
 alias gst='git status --short --branch'
@@ -99,3 +100,4 @@ if [[ ! -n $TMUX ]]; then
   fi
   tmux attach-session -t "$ID"
 fi
+
