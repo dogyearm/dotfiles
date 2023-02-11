@@ -1,24 +1,15 @@
-# History file and its size
-export HISTFILE=~/.zsh_history
-export HISTSIZE=1000000
-export SAVEHIST=1000000
+# NOTE: set fpath before compinit
+typeset -gx -U fpath
+fpath=( \
+    ~/.zsh/Completion(N-/) \
+    ~/.zsh/functions(N-/) \
+    /usr/local/share/zsh/site-functions(N-/) \
+    $fpath \
+)
 
-# Settings for golang
-export GOROOT=/usr/local/opt/go/libexec
-export GOPATH=$HOME
-export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
+cdpath=(
+  $HOME/(N-/)
+  $HOME/src/github.com/dogyearm(N-/)
+  $cdpath
+)
 
-# Ssettings for dircolor
-export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
-
-# Setting for rbenv
-export PATH="$HOME/.rbenv/bin:$PATH"
-eval "$(rbenv init -)"
-
-# Setting for NodeJS
-export PATH="$HOME/.nodebrew/current/bin:$PATH"
-
-# terminalで文字化けが発生するので設定
-export LANG="ja_JP.UTF-8"
-
-export EDITOR="vim"

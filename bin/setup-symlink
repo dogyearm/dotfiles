@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Symlink
-dotfiles=(.zshrc .zshenv .vimrc .tmux.conf .gitconfig .gitignore .bin)
+dotfiles=(.zprofile .zshrc .zshenv .zsh .vimrc .tmux.conf .gitconfig .gitignore .bin)
 
 for file in "${dotfiles[@]}"; do
   sourceFile="$(pwd)/$file"
