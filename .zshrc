@@ -28,8 +28,6 @@ zstyle ':completion:*' group-name ''
 autoload -Uz compinit && compinit -u  # enable autocomplete
 autoload -Uz colors && colors         # enable color for prompt
 
-function chpwd() { ls }
-
 # alias設定(zsh固有)
 if [ -f ~/.zsh/alias.zsh ]; then
     source ~/.zsh/alias.zsh
@@ -41,4 +39,8 @@ fi
 
 if [ -f ~/.zsh/tmux.zsh ]; then
     source ~/.zsh/tmux.zsh
+fi
+
+if [ -f ~/.zsh/hook.zsh ]; then
+    source ~/.zsh/hook.zsh
 fi
