@@ -19,8 +19,9 @@ alias pd='pwd'
 
 setopt prompt_subst                  # use color
 setopt nobeep                        # no beep
-autoload -U compinit && compinit -u  # enable autocomplete
-autoload colors && colors            # enable color for prompt
+autoload -Uz compinit && compinit -u  # enable autocomplete
+autoload -Uz colors && colors            # enable color for prompt
+autoload -Uz add-zsh-hook
 setopt auto_pushd                    # cd -
 setopt auto_list
 setopt list_packed
@@ -30,6 +31,10 @@ setopt auto_cd; function chpwd() { ls } # cd & ls
 
 zstyle ':completion:*:default' menu select=2 # highlight autocomplete
 zstyle ':completion:*' list-colors 'di=34' 'ln=35' 'so=32' 'ex=31' 'bd=46;34' 'cd=43;34' # 補完色付
+zstyle ':completion:*' verbose yes
+zstyle ':completion:*' format '%B%d%b'
+zstyle ':completion:*:warnings' format 'No matches for: %d'
+zstyle ':completion:*' group-name ''
 
 setopt share_history           # 履歴を他のシェルとリアルタイム共有する
 setopt hist_ignore_all_dups    # 同じコマンドをhistoryに残さない
@@ -55,3 +60,13 @@ if [[ ! -n $TMUX ]]; then
 fi
 
 cd ~/src/github.com/dogyearm/dotfiles
+
+# alias設定(zsh固有)
+if [ -f ~/.zsh/.alias ]; then
+    source ~/.zsh/.alias
+fi
+
+autoload -Uz fd
+autoload -Uz fshow
+autoload -Uz fbr
+autoload -Uz fbrr
