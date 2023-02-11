@@ -1,10 +1,10 @@
 #!/bin/bash
 
 # Symlink
-ln -snfv "$HOME"/src/github.com/dogyearm/dotfiles/.zshrc "$HOME"/.zshrc
-ln -snfv "$HOME"/src/github.com/dogyearm/dotfiles/.zshenv "$HOME"/.zshenv
-ln -snfv "$HOME"/src/github.com/dogyearm/dotfiles/.vimrc "$HOME"/.vimrc
-ln -snfv "$HOME"/src/github.com/dogyearm/dotfiles/.tmux.conf "$HOME"/.tmux.conf
-ln -snfv "$HOME"/src/github.com/dogyearm/dotfiles/.gitconfig "$HOME"/.gitconfig
-ln -snfv "$HOME"/src/github.com/dogyearm/dotfiles/.gitignore "$HOME"/.gitignore
-ln -snfv "$HOME"/src/github.com/dogyearm/dotfiles/bin "$HOME"/.bin
+dotfiles=(.zshrc .zshenv .vimrc .tmux.conf .gitconfig .gitignore .bin)
+
+for file in "${dotfiles[@]}"; do
+  sourceFile="$(pwd)/$file"
+  targetFile="$HOME/$file"
+  ln -snfv $sourceFile $targetFile
+done

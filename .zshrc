@@ -100,4 +100,3 @@ if [[ ! -n $TMUX ]]; then
   fi
   tmux attach-session -t "$ID"
 fi
-
