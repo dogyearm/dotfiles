@@ -18,15 +18,15 @@ setopt hist_reduce_blanks      # historyに保存するときに余分なスペ�
 setopt hist_save_no_dups       # 重複するコマンドが保存されるとき、古い方を削除する
 setopt inc_append_history      # 実行時に履歴をファイルにに追加していく
 
+autoload -Uz compinit && compinit -u  # enable autocomplete
+autoload -Uz colors && colors         # enable color for prompt
+
 zstyle ':completion:*:default' menu select=2 # highlight autocomplete
 zstyle ':completion:*' list-colors 'di=34' 'ln=35' 'so=32' 'ex=31' 'bd=46;34' 'cd=43;34' # 補完色付
 zstyle ':completion:*' verbose yes
 zstyle ':completion:*' format '%B%d%b'
 zstyle ':completion:*:warnings' format 'No matches for: %d'
 zstyle ':completion:*' group-name ''
-
-autoload -Uz compinit && compinit -u  # enable autocomplete
-autoload -Uz colors && colors         # enable color for prompt
 
 # alias設定(zsh固有)
 if [ -f ~/.zsh/alias.zsh ]; then
