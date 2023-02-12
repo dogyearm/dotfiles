@@ -1,8 +1,8 @@
 #!/bin/sh
 
-# Install Zsh
-if ! [ -x /usr/local/bin/zsh ] >/dev/null 2>&1
+# Install Git
+if ! type git >/dev/null 2>&1
 then
-    brew install zsh
+    brew install git
 fi
 
