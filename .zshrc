@@ -45,3 +45,7 @@ fi
 if [ -f ~/.zsh/plugin.zsh ]; then
     source ~/.zsh/plugin.zsh
 fi
+
+# NOTE:
+# - souce ~/.zsh/*.zsh
+# - tmux window を S-j, S-k で移動
