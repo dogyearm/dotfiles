@@ -41,3 +41,7 @@ fi
 if [ -f ~/.zsh/completion.zsh ]; then
     source ~/.zsh/completion.zsh
 fi
+
+if [ -f ~/.zsh/plugin.zsh ]; then
+    source ~/.zsh/plugin.zsh
+fi
