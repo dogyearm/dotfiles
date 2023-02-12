@@ -101,6 +101,7 @@ if has("autocmd")
   autocmd FileType zsh        setlocal sw=4 sts=4 ts=4 et
   autocmd FileType scala      setlocal sw=2 sts=2 ts=2 et
   autocmd FileType go         setlocal noexpandtab list tabstop=2 shiftwidth=2
+  autocmd FileType md         setlocal sw=2 sts=2 ts=2 et
 endif
 
 " Install vim-plug if not found
@@ -124,6 +125,7 @@ Plug 'vim-airline/vim-airline-themes'               " status bar theme
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-rhubarb'
+Plug 'mattn/webapi-vim'
 Plug 'mattn/vim-gist'
 call plug#end()
 
