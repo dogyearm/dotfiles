@@ -113,6 +113,7 @@ Plug 'vim-airline/vim-airline-themes'               " status bar theme
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-rhubarb'
+Plug 'mattn/vim-gist'
 call plug#end()
 
 colorscheme solarized
