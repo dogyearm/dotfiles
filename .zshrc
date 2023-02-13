@@ -4,8 +4,8 @@ autoload -Uz colors && colors
 umask 022
 bindkey -e
 
-# PROMPT='%F{47}❯❯❯%f '
-PROMPT='%F{47}❯❯❯%f 👉 '
+PROMPT='%F{47}❯❯❯%f '
+# PROMPT='%F{47}❯❯❯%f 👉 '
 RPROMPT="%*"
 
 setopt prompt_subst            # use color
