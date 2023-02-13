@@ -59,7 +59,6 @@ autocmd FileType java  :set fileencoding=utf-8
 autocmd FileType scala :set fileencoding=utf-8
 autocmd BufNewFile,BufRead *.vue set filetype=html
 autocmd BufNewFile,BufRead *.rules set filetype=js
-autocmd BufNewFile,BufRead *.md set filetype=markdown
 
 " Indent
 set autoindent                                      " 自動でインデント
@@ -101,7 +100,7 @@ if has("autocmd")
   autocmd FileType zsh        setlocal sw=4 sts=4 ts=4 et
   autocmd FileType scala      setlocal sw=2 sts=2 ts=2 et
   autocmd FileType go         setlocal noexpandtab list tabstop=2 shiftwidth=2
-  autocmd FileType md         setlocal sw=2 sts=2 ts=2 et
+  autocmd FileType markdown   setlocal sw=2 sts=2 ts=2 et
 endif
 
 " Install vim-plug if not found
