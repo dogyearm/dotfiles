@@ -177,3 +177,5 @@ nnoremap <silent> <leader>oom :GBrowse master:%<CR>
 " - fzf.vim で directory search して
 " 選択後に filename 入力して新規ファイル作成
 " - https://engineering.mercari.com/blog/entry/mercari_codecast_1/
+
+" call map(sort(split(globpath(&runtimepath, 'config/*.vim'))), {->[execute('exec "so" v:val')]})
