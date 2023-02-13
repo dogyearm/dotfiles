@@ -174,8 +174,11 @@ nnoremap <silent> <leader>oo :GBrowse<CR>
 nnoremap <silent> <leader>oom :GBrowse master:%<CR>
 
 " NOTE:
-" - fzf.vim で directory search して
-" 選択後に filename 入力して新規ファイル作成
-" - https://engineering.mercari.com/blog/entry/mercari_codecast_1/
+" - fzf auto yanc
+"   - fzf.vim で directory search して
+"   - 選択後に filename 入力して新規ファイル作成
+" - save and git add
+"   - https://engineering.mercari.com/blog/entry/mercari_codecast_1/
+"   - git 操作を left pane で
 
 " call map(sort(split(globpath(&runtimepath, 'config/*.vim'))), {->[execute('exec "so" v:val')]})
