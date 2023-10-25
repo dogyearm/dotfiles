@@ -18,6 +18,13 @@ then
   brew install zsh
 fi
 
+# Tmux で必要
+# brew install reattach-to-user-namespace
+# brew install zplug
+
+# Install rbenv
+# brew install rbenv
+
 # Install tmux
 if ! type tmux >/dev/null 2>&1
 then

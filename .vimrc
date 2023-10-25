@@ -158,8 +158,8 @@ nnoremap <silent> <leader>urm :Files app/models/<CR>
 nnoremap <silent> <leader>urma :Files app/mailers/<CR>
 nnoremap <silent> <leader>urd :Files db/<CR>
 nnoremap <silent> <leader>urv :Files app/views/<CR>
-nnoremap <silent> <leader>urs :Files app/stylesheets/<CR>
-nnoremap <silent> <leader>urj :Files app/javascripts/<CR>
+nnoremap <silent> <leader>urs :Files app/assets/stylesheets/<CR>
+nnoremap <silent> <leader>urj :Files app/javascript/<CR>
 nnoremap <silent> <leader>uro :Files config/<CR>
 nnoremap <silent> <leader>url :Files lib/<CR>
 nnoremap <silent> <leader>urr :Files spec/<CR>
@@ -182,3 +182,5 @@ nnoremap <silent> <leader>oom :GBrowse master:%<CR>
 "   - git 操作を left pane で
 
 " call map(sort(split(globpath(&runtimepath, 'config/*.vim'))), {->[execute('exec "so" v:val')]})
+
+cd ~/src/github.com/dogyearm/

@@ -20,3 +20,7 @@ eval "$(rbenv init -)"
 
 # Setting for NodeJS
 export PATH="$HOME/.nodebrew/current/bin:$PATH"
+
+# Setting for Homebrew
+eval "$(/opt/homebrew/bin/brew shellenv)"
+
