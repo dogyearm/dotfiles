@@ -444,26 +444,6 @@
 			<key>Text</key>
 			<string></string>
 		</dict>
-		<key>0x4b-0x120000-0x28</key>
-		<dict>
-			<key>Action</key>
-			<integer>1</integer>
-			<key>Label</key>
-			<string></string>
-			<key>Text</key>
-			<string></string>
-		</dict>
-		<key>0x6a-0x140000-0x26</key>
-		<dict>
-			<key>Action</key>
-			<integer>12</integer>
-			<key>Label</key>
-			<string></string>
-			<key>Text</key>
-			<string>ft\n</string>
-			<key>Version</key>
-			<integer>1</integer>
-		</dict>
 		<key>0x9-0x40000</key>
 		<dict>
 			<key>Action</key>
@@ -1215,6 +1195,8 @@
 			<string>/Users/do6year</string>
 		</dict>
 	</array>
+	<key>OpenTmuxWindowsIn</key>
+	<integer>0</integer>
 	<key>PMPrintingExpandedStateForPrint2</key>
 	<false/>
 	<key>PMPrintingPanelSize</key>
