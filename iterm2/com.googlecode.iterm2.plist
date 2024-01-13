@@ -568,6 +568,10 @@
 	<true/>
 	<key>HotkeyModifiers</key>
 	<integer>524288</integer>
+	<key>NeverWarnAboutShortLivedSessions_28287BE0-922F-4FE7-AD1D-2AF519A7A818</key>
+	<true/>
+	<key>NeverWarnAboutShortLivedSessions_28287BE0-922F-4FE7-AD1D-2AF519A7A818_selection</key>
+	<integer>0</integer>
 	<key>New Bookmarks</key>
 	<array>
 		<dict>

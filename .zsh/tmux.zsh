@@ -20,6 +20,15 @@ function ft() {
     fi
 }
 
+# Tmuxのセッションを終了する
+function trm() {
+    local sessions=$(tmux list-sessions -F "#S" 2>/dev/null)
+    local session=$(printf '%s\n' "${sessions[@]}" | fzf --height=10 --reverse)
+    [ -z "$session" ] && return
+
+    tmux kill-session -t "$session"
+}
+
 # Tmuxのセットアップ
 if [[ ! -n $TMUX ]]; then
     tmux_sessions=$(tmux ls 2>/dev/null)
