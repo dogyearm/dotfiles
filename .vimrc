@@ -126,6 +126,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-rhubarb'
 Plug 'mattn/webapi-vim'
 Plug 'mattn/vim-gist'
+Plug 'github/copilot.vim'
 call plug#end()
 
 colorscheme solarized
@@ -146,7 +147,7 @@ nnoremap <silent> <leader>c :Commits<CR>
 nnoremap <silent> <leader>l :Lines<CR>
 nnoremap <silent> <leader>r :Rg<CR>
 
-command! -bang ProjectRoot call fzf#vim#files('~/src/github.com/dogyearm', <bang>0)
+command! -bang ProjectRoot call fzf#vim#files('~/src/', <bang>0)
 let $FZF_DEFAULT_OPTS="--layout=reverse --info=inline"
 let $FZF_DEFAULT_COMMAND='ag --hidden --ignore .git -g ""'
 let g:fzf_layout = { 'up': '30%' }
@@ -183,4 +184,4 @@ nnoremap <silent> <leader>oom :GBrowse master:%<CR>
 
 " call map(sort(split(globpath(&runtimepath, 'config/*.vim'))), {->[execute('exec "so" v:val')]})
 
-cd ~/src/github.com/dogyearm/
+cd ~/src/

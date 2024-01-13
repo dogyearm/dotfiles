@@ -50,5 +50,4 @@ fi
 # NOTE:
 # - souce ~/.zsh/*.zsh
 # - tmux window を S-j, S-k で移動
-
-cd ~/src/github.com/dogyearm/
+cd ~/src/

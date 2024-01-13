@@ -1,0 +1,5 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhistcnt =3
+let g:netrw_dirhist_3='/Users/dogyearm/src/xs739971.xsrv.jp/public_html/wp-content/themes/wolmart-child'
+let g:netrw_dirhist_2='/Users/dogyearm/src/xs739971.xsrv.jp/public_html/wp-content/themes/wolmart-child/woocommerce/affiliate-for-woocommerce'
+let g:netrw_dirhist_1='/Users/dogyearm/src/github.com/okame/local-uni/app/assets/stylesheets/layout'
