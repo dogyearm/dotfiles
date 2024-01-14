@@ -184,4 +184,15 @@ nnoremap <silent> <leader>oom :GBrowse master:%<CR>
 
 " call map(sort(split(globpath(&runtimepath, 'config/*.vim'))), {->[execute('exec "so" v:val')]})
 
+" 今日の日付をフォーマットしてファイル名を作成
+function! CreateDailyNote()
+    let l:filename = strftime("%Y%m%d") . ".md"
+    let l:directory = "~/src/github.com/dogyearm/hoge/"  " 保存したいディレクトリのパス
+    let l:filepath = l:directory . "/" . l:filename
+    execute "edit " . l:filepath
+endfunction
+
+" ,,m を押すとCreateDailyNote関数を呼び出す
+nnoremap ,,f :call CreateDailyNote()<CR>
+
 cd ~/src/
