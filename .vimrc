@@ -188,12 +188,19 @@ nnoremap <silent> <leader>oom :GBrowse master:%<CR>
 function! CreateDailyNote()
     " 日付関連の情報を取得
     let l:year = strftime("%Y")
-    let l:month = strftime("%m")
+    let l:month_num = strftime("%m")
     let l:day = strftime("%d")
-    let l:quarter = ((str2nr(l:month) - 1) / 3) + 1
+    let l:quarter = ((str2nr(l:month_num) - 1) / 3) + 1
 
-    " 月の初日の曜日を計算（0=日曜, 1=月曜, ..., 6=土曜）
-    let l:first_day_of_month = l:year . '/' . l:month . '/01'
+    " 月の名前をマッピング
+    let l:months = {'01': 'January', '02': 'February', '03': 'March', '04': 'April',
+                \ '05': 'May', '06': 'June', '07': 'July', '08': 'August',
+                \ '09': 'September', '10': 'October', '11': 'November', '12': 'December'}
+    let l:month_name = l:months[l:month_num]
+    let l:formatted_month = l:month_num . '_' . l:month_name
+
+    " 月の初日の曜日を計算
+    let l:first_day_of_month = l:year . '/' . l:month_num . '/01'
     let l:first_day_of_month_dow = strftime("%w", strptime("%Y/%m/%d", l:first_day_of_month))
 
     " 今日の日付の曜日
@@ -204,11 +211,10 @@ function! CreateDailyNote()
     let l:week_number = (str2nr(l:day_of_month) + str2nr(l:first_day_of_month_dow) - 1) / 7 + 1
 
     " ディレクトリパスの作成
-    " let l:directory = "~/src/github.com/dogyearm/note/" . l:year . "/Q" . l:quarter . "/" . l:month . "/Week_" . ceil(l:week_number)
-    let l:directory = "~/src/github.com/dogyearm/note/" . l:year . "/Q" . l:quarter . "/" . l:month
+    let l:directory = "~/src/github.com/dogyearm/note/" . l:year . "/Q" . l:quarter . "/" . l:formatted_month . "/Week_" . ceil(l:week_number)
 
     " ファイル名の作成
-    let l:filename = l:year . l:month . l:day . ".md"
+    let l:filename = l:year . l:month_num . l:day . ".md"
     let l:filepath = l:directory . "/" . l:filename
 
     " ディレクトリが存在しない場合は作成
