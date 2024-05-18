@@ -187,12 +187,34 @@ nnoremap <silent> <leader>oom :GBrowse master:%<CR>
 " 今日の日付をフォーマットしてファイル名を作成
 function! CreateDailyNote()
     let l:filename = strftime("%Y%m%d") . ".md"
-    let l:directory = "~/src/github.com/dogyearm/hoge/"  " 保存したいディレクトリのパス
+    let l:directory = "~/src/github.com/dogyearm/note/2024/"  " 保存したいディレクトリのパス
     let l:filepath = l:directory . "/" . l:filename
     execute "edit " . l:filepath
 endfunction
 
 " ,,m を押すとCreateDailyNote関数を呼び出す
-nnoremap ,,f :call CreateDailyNote()<CR>
+nnoremap .. :call CreateDailyNote()<CR>
 
-cd ~/src/
+function! JekyllNewPost()
+    let title = input('Post title: ')
+    " タイトルからファイル名を生成（スペースをハイフンに置き換え、小文字に変換）
+    let filename = tolower(substitute(title, ' ', '-', 'g'))
+    " 現在の日付と時刻を YYYY-MM-DD HH:MM:SS +TZ の形式で取得
+    let datetime = strftime('%Y-%m-%d %H:%M:%S %z')
+    " ファイルパスを生成（_posts ディレクトリに配置）
+    let filepath = '_posts/' . strftime('%Y-%m-%d') . '-' . filename . '.md'
+    " 新規ファイルを開く
+    exec 'e ' . filepath
+    " ファイルの先頭にフロントマターを挿入
+    call append(0, ['---', 'layout: post', 'title: "' . title . '"', 'date: ' . datetime, 'categories: ', '---', ''])
+    " 挿入した後に2行目にカーソルを移動（編集を開始する場所）
+    exec 'normal! 2G'
+endfunction
+
+" コマンド 'JekyllNewPost' を作成して関数を呼び出す
+nnoremap .jk :call JekyllNewPost()<CR>
+
+augroup clear_markdownError_highlight
+  autocmd!
+  autocmd FileType markdown highlight link markdownError NONE
+augroup END
