@@ -186,9 +186,37 @@ nnoremap <silent> <leader>oom :GBrowse master:%<CR>
 
 " 今日の日付をフォーマットしてファイル名を作成
 function! CreateDailyNote()
-    let l:filename = strftime("%Y%m%d") . ".md"
-    let l:directory = "~/src/github.com/dogyearm/note/2024/"  " 保存したいディレクトリのパス
+    " 日付関連の情報を取得
+    let l:year = strftime("%Y")
+    let l:month = strftime("%m")
+    let l:day = strftime("%d")
+    let l:quarter = ((str2nr(l:month) - 1) / 3) + 1
+
+    " 月の初日の曜日を計算（0=日曜, 1=月曜, ..., 6=土曜）
+    let l:first_day_of_month = l:year . '/' . l:month . '/01'
+    let l:first_day_of_month_dow = strftime("%w", strptime("%Y/%m/%d", l:first_day_of_month))
+
+    " 今日の日付の曜日
+    let l:today_dow = strftime("%w")
+
+    " 月の何週目かを計算
+    let l:day_of_month = strftime("%d")
+    let l:week_number = (str2nr(l:day_of_month) + str2nr(l:first_day_of_month_dow) - 1) / 7 + 1
+
+    " ディレクトリパスの作成
+    " let l:directory = "~/src/github.com/dogyearm/note/" . l:year . "/Q" . l:quarter . "/" . l:month . "/Week_" . ceil(l:week_number)
+    let l:directory = "~/src/github.com/dogyearm/note/" . l:year . "/Q" . l:quarter . "/" . l:month
+
+    " ファイル名の作成
+    let l:filename = l:year . l:month . l:day . ".md"
     let l:filepath = l:directory . "/" . l:filename
+
+    " ディレクトリが存在しない場合は作成
+    if !isdirectory(expand(l:directory))
+        call mkdir(expand(l:directory), "p")
+    endif
+
+    " ファイルを開く
     execute "edit " . l:filepath
 endfunction
 
