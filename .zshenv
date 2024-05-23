@@ -19,3 +19,13 @@ cdpath=(
   $cdpath
 )
 
+export GOROOT=/usr/local/go
+export GOPATH=$HOME/src
+export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
+
+# Rails
+# export LIBRARY_PATH=$LIBRARY_PATH:$(brew --prefix zstd)/lib/
+
+# Tmux
+export TMUX_TMPDIR=$HOME/.tmux
+mkdir -p $TMUX_TMPDIR

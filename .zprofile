@@ -16,7 +16,7 @@ export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
 
 # Setting for rbenv
 export PATH="$HOME/.rbenv/bin:$PATH"
-eval "$(rbenv init -)"
+# eval "$(rbenv init -)"
 
 # Setting for NodeJS
 export PATH="$HOME/.nodebrew/current/bin:$PATH"
